@@ -1,0 +1,9 @@
+PackageFactory:
+  AtomicFusion:
+    PropTypes:
+      enable: false
+
+Neos:
+  Fusion:
+    defaultContext:
+      PropTypes: \PackageFactory\AtomicFusion\PropTypes\Eel\PropTypesHelper

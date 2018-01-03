@@ -1,0 +1,4 @@
+PackageFactory:
+  AtomicFusion:
+    PropTypes:
+      enable: true
