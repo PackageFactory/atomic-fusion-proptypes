@@ -4,12 +4,9 @@ namespace PackageFactory\AtomicFusion\PropTypes\Validators;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Validation\Validator\AbstractValidator;
 use Neos\Flow\Validation\Validator\ValidatorInterface;
-use PackageFactory\AtomicFusion\PropTypes\Eel\PropTypesValidator;
 
 /**
- * Validator for integers.
- *
- * @api
+ * Validator for shapes.
  */
 class ShapeValidator extends AbstractValidator
 {
@@ -28,6 +25,9 @@ class ShapeValidator extends AbstractValidator
      */
     protected function isValid($value)
     {
+        if (is_null($value)){
+            return;
+        }
 
         if (is_array($value)){
             foreach($this->options['shape'] as $key => $subValidator) {

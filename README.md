@@ -17,12 +17,13 @@ This package is by default only active in development-context.
 
 ## Supported `@propTypes`
 
-* `required`
+* `isRequired`
 * `boolean`
 * `integer`
 * `float`
 * `string`
 * `number`
+* `resourcePath`
 * `regex('/pattern/')`
 * `oneOf(123, "foo", "bar")`
 * `arrayOf( PropTypes.string )`

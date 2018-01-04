@@ -1,6 +1,6 @@
 {
     "description": "Validate @propTypes annotations for the fusion-prototypes PackageFactory.AtomicFusion:Component and Neos.Fusion:Component",
-    "type": "neos-plugin",
+    "type": "neos-package",
     "name": "packagefactory/atomicfusion-proptypes",
     "license": "GPL-3.0",
     "require": {

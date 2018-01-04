@@ -7,8 +7,6 @@ use Neos\Flow\Validation\Validator\ValidatorInterface;
 
 /**
  * Validator for integers.
- *
- * @api
  */
 class ArrayOfValidator extends AbstractValidator
 {
@@ -27,6 +25,10 @@ class ArrayOfValidator extends AbstractValidator
      */
     protected function isValid($value)
     {
+        if (is_null($value)){
+            return;
+        }
+
         /**
          * @var ValidatorInterface $itemValidator
          */

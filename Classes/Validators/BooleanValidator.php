@@ -5,13 +5,12 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Validation\Validator\AbstractValidator;
 
 /**
- * Validator for integers.
- *
- * @api
- * @Flow\Scope("singleton")
+ * Validator for boolen.
  */
 class BooleanValidator extends AbstractValidator
 {
+    protected $acceptsEmptyValues = false;
+
     /**
      * Checks if the given value is a valid boolean.
      *
@@ -20,8 +19,9 @@ class BooleanValidator extends AbstractValidator
      */
     protected function isValid($value)
     {
-        if (is_bool($value) === false) {
-            $this->addError('A valid boolean is expected.', 1514998717);
+        if (is_null($value) || is_bool($value)) {
+            return;
         }
+        $this->addError('A valid boolean is expected.', 1514998717);
     }
 }

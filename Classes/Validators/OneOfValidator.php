@@ -5,9 +5,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Validation\Validator\AbstractValidator;
 
 /**
- * Validator for integers.
- *
- * @api
+ * Disjunction-validator for multiple types
  */
 class OneOfValidator extends AbstractValidator
 {
