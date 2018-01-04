@@ -1,34 +1,53 @@
-# PackageFactory.AtomicFusion
+# PackageFactory.AtomicFusion.PropTypes
 
-> Prototypes and Helpers for implementing a component-architecture with Neos.Fusion
+> Validate the props passed to a component via `@propType` annotation 
 
+The syntax for the propType annotation is derived from the react-propTypes.
+
+ATTENTION: This package is by default only active in development-context.
 
 ```
-prototype(Vendor.Site:Foo) < prototype(Neos.Fusion:Component) {
-	@propTypes {
-		title = ${PropTypes.string.isRequired}
-		active = ${PropTypes.boolean}
-	}
+prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
+    @propTypes {
+
+        flag = ${PropTypes.boolean.isRequired}
+        
+        string = ${PropTypes.string.isRequired}
+
+        integer = ${PropTypes.integer.isRequired}
+
+        number = ${PropTypes.number.isRequired}
+
+        regex = ${PropTypes.regex('/.*regex.*/').isRequired}
+
+        fooOrBar = ${PropTypes.oneOf("foo", "bar").isRequired}
+
+        arrayOfIntegers = ${PropTypes.arrayOf( PropTypes.integer )}
+
+        shape = ${PropTypes.shape({'foo': PropTypes.integer, 'bar': PropTypes.string}).isRequired}
+
+        stringOrInt = ${PropTypes.anyOf(PropTypes.string, PropTypes.integer).isRequired}
+    }   
 }
 ```
 
-Since this will validate all props that are passed to fusion-components.   
-This package is by default only active in development-context.
+This will validate the given props with the validator that created in the @propTypes section 
+via. 
 
-## Supported `@propTypes`
+## Methods that are supported by the propTypes helper
 
-* `isRequired`
-* `boolean`
-* `integer`
-* `float`
-* `string`
-* `number`
-* `resourcePath`
-* `regex('/pattern/')`
-* `oneOf(123, "foo", "bar")`
-* `arrayOf( PropTypes.string )`
-* `anyOf( PropTypes.string, PropTypes.integer )`
-* `shape( {foo: PropTypes.string} )`
+* `PropTypes.isRequired`
+* `PropTypes.boolean`
+* `PropTypes.integer`
+* `PropTypes.float`
+* `PropTypes.string`
+* `PropTypes.number`
+* `PropTypes.resourcePath`
+* `PropTypes.regex('/pattern/')`
+* `PropTypes.oneOf(123, "foo", "bar")`
+* `PropTypes.arrayOf( PropTypes.string )`
+* `PropTypes.anyOf( PropTypes.string, PropTypes.integer )`
+* `PropTypes.shape({'foo': PropTypes.integer, 'bar': PropTypes.string})`
 
 ## License
 

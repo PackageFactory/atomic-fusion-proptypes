@@ -1,5 +1,5 @@
 <?php
-namespace PackageFactory\AtomicFusion\PropTypes\Tests\Validators;
+namespace PackageFactory\AtomicFusion\PropTypes\Tests\Unit\Validators;
 
 use Neos\Flow\Tests\Unit\Validation\Validator\AbstractValidatorTestcase;
 use PackageFactory\AtomicFusion\PropTypes\Validators\BooleanValidator;
@@ -13,35 +13,50 @@ class BooleanValidatorTest extends AbstractValidatorTestcase
     protected $validatorClassName = BooleanValidator::class;
 
     /**
-     * Data provider with valid floats
+     * Data provider with valid examples
      *
      * @return array
      */
-    public function exampleValues()
+    public function validExamples()
     {
         return [
-            [TRUE, TRUE],
-            [FALSE, TRUE],
-            [null, TRUE],
-            ['', FALSE],
-            [123, FALSE],
-            ['foobar', FALSE],
-            [[], FALSE],
-            [[1,2,3], FALSE],
-            [['foo' => 'foo', 'bar' => 1], FALSE]
+            [true],
+            [false],
+            [null]
         ];
     }
 
     /**
      * @test
-     * @dataProvider exampleValues
+     * @dataProvider validExamples
      */
-    public function floatValidatorReturnsNoErrorsForValidValues($value, $expectToBeValid)
+    public function validatorReturnsNoErrorsForValidExamples($value)
     {
-        if ($expectToBeValid) {
-            $this->assertFalse($this->validator->validate($value)->hasErrors());
-        } else {
-            $this->assertTrue($this->validator->validate($value)->hasErrors());
-        }
+        $this->assertFalse($this->validator->validate($value)->hasErrors());
+    }
+
+    /**
+     * Data provider with invalid examples
+     *
+     * @return array
+     */
+    public function invalidExamples()
+    {
+        return [
+            [''],
+            [123],
+            ['foobar'],
+            [[]],
+            [[1,2,3]],
+            [['foo' => 'foo', 'bar' => 1]]
+        ];
+    }
+    /**
+     * @test
+     * @dataProvider invalidExamples
+     */
+    public function validatorReturnsErrorsForInValidExamples($value)
+    {
+        $this->assertTrue($this->validator->validate($value)->hasErrors());
     }
 }

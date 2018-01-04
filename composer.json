@@ -1,5 +1,5 @@
 {
-    "description": "Validate @propTypes annotations for the fusion-prototypes PackageFactory.AtomicFusion:Component and Neos.Fusion:Component",
+    "description": "Fusion port of react-propTypes for the fusion-prototypes PackageFactory.AtomicFusion:Component and Neos.Fusion:Component",
     "type": "neos-package",
     "name": "packagefactory/atomicfusion-proptypes",
     "license": "GPL-3.0",
@@ -9,6 +9,11 @@
     "autoload": {
         "psr-4": {
             "PackageFactory\\AtomicFusion\\PropTypes\\": "Classes/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PackageFactory\\AtomicFusion\\PropTypes\\Tests\\": "Tests/"
         }
     },
     "extra": {

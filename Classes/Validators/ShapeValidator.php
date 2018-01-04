@@ -4,12 +4,15 @@ namespace PackageFactory\AtomicFusion\PropTypes\Validators;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Validation\Validator\AbstractValidator;
 use Neos\Flow\Validation\Validator\ValidatorInterface;
+use Neos\Utility\ObjectAccess;
 
 /**
  * Validator for shapes.
  */
 class ShapeValidator extends AbstractValidator
 {
+    protected $acceptsEmptyValues = false;
+
     /**
      * @var array
      */
@@ -25,22 +28,33 @@ class ShapeValidator extends AbstractValidator
      */
     protected function isValid($value)
     {
-        if (is_null($value)){
+        if (is_null($value)) {
             return;
         }
 
-        if (is_array($value)){
-            foreach($this->options['shape'] as $key => $subValidator) {
-                if (array_key_exists($key, $value)) {
-                    $subValue = $value[$key];
-                    if ($subValidator instanceof ValidatorInterface) {
-                        $subResult = $subValidator->validate($subValue);
-                        if ($subResult->hasErrors() ) {
-                            $this->addError('Key %s is not valid', 1515003533, [$key]);
-                        }
+        if (is_array($value) || ($value instanceof \ArrayAccess) || is_object($value)) {
+            foreach ($this->options['shape'] as $key => $subValidator) {
+                if (is_array($value) || ($value instanceof \ArrayAccess)) {
+                    if (array_key_exists($key, $value)) {
+                        $subValue = $value[$key];
+                    } else {
+                        $subValue = null;
+                    }
+                } elseif (ObjectAccess::isPropertyGettable($value, $key)) {
+                    $subValue = ObjectAccess::getPropertyPath($value, $key);
+                } else {
+                    $subValue = null;
+                }
+
+                if ($subValidator instanceof ValidatorInterface) {
+                    $subResult = $subValidator->validate($subValue);
+                    if ($subResult->hasErrors()) {
+                        $this->addError('Shape-Property %s is not valid', 1515003533, [$key]);
                     }
                 }
             }
+        } else {
+            $this->addError('Shape-value is expected to be an array or implement ArrayAccess', 1515070099);
         }
     }
 }

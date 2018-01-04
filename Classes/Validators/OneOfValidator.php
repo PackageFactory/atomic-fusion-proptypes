@@ -9,6 +9,8 @@ use Neos\Flow\Validation\Validator\AbstractValidator;
  */
 class OneOfValidator extends AbstractValidator
 {
+    protected $acceptsEmptyValues = false;
+
     /**
      * @var array
      */
@@ -24,8 +26,14 @@ class OneOfValidator extends AbstractValidator
      */
     protected function isValid($value)
     {
-        if (in_array($value, $this->options['values']) === false) {
-            $this->addError('One of %s is expected.', 1514999090, [json_encode($this->options['values'])]);
+        if (is_null($value)) {
+            return;
         }
+
+        if (in_array($value, $this->options['values'], true)) {
+            return;
+        }
+
+        $this->addError('One of %s is expected.', 1514999090, [json_encode($this->options['values'])]);
     }
 }

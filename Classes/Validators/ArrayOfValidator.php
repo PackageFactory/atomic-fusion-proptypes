@@ -10,6 +10,8 @@ use Neos\Flow\Validation\Validator\ValidatorInterface;
  */
 class ArrayOfValidator extends AbstractValidator
 {
+    protected $acceptsEmptyValues = false;
+
     /**
      * @var array
      */
@@ -25,7 +27,7 @@ class ArrayOfValidator extends AbstractValidator
      */
     protected function isValid($value)
     {
-        if (is_null($value)){
+        if (is_null($value)) {
             return;
         }
 
@@ -33,13 +35,15 @@ class ArrayOfValidator extends AbstractValidator
          * @var ValidatorInterface $itemValidator
          */
         $itemValidator = $this->options['itemValidator'];
-        if (is_array($value)) {
+        if (is_array($value) || ($value instanceof \Traversable)) {
             foreach ($value as $key => $item) {
                 $itemResult = $itemValidator->validate($item);
-                if ($itemResult->hasErrors() ) {
+                if ($itemResult->hasErrors()) {
                     $this->addError('Item %s is not valid', 1515003545, [$key]);
                 }
             }
+        } else {
+            $this->addError('Array-value is expected to be an array or implement \Traversable', 1515070099);
         }
     }
 }
