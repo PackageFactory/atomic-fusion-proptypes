@@ -25,7 +25,8 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
         'arrayOf',
         'shape',
         'anyOf',
-        'oneOf'
+        'oneOf',
+        'flowQuery'
     ];
 
     /**
@@ -76,15 +77,6 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
     public function getFloat()
     {
         $this->addValidator(new FloatValidator());
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function getNumber()
-    {
-        $this->addValidator(new NumberValidator());
         return $this;
     }
 
@@ -148,6 +140,16 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
     public function shape($shape)
     {
         $this->addValidator(new ShapeValidator(['shape' => $shape]));
+        return $this;
+    }
+
+    /**
+     * @param string $condition
+     * @return $this
+     */
+    public function flowQuery($condition)
+    {
+        $this->addValidator(new FlowQueryValidator(['condition' => $condition]));
         return $this;
     }
 

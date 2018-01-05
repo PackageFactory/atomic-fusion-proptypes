@@ -1,7 +1,7 @@
 <?php
-namespace PackageFactory\AtomicFusion\PropTypes\Tests\Fucntional\Validators;
+namespace PackageFactory\AtomicFusion\PropTypes\Tests\Functional\Validators;
 
-use Neos\Flow\Tests\Unit\Validation\Validator\AbstractValidatorTestcase;
+use Neos\Flow\Tests\FunctionalTestCase;
 use Neos\Flow\Validation\Validator\StringValidator;
 use PackageFactory\AtomicFusion\PropTypes\Validators\IntegerValidator;
 use PackageFactory\AtomicFusion\PropTypes\Validators\PropTypeValidator;
@@ -9,10 +9,10 @@ use Neos\Flow\Validation\Validator\ValidatorInterface;
 use Neos\Error\Messages\Result;
 
 /**
- * Testcase for the shape validator
+ * Testcase for the propType validator
  *
  */
-class PropTypeValidatorTest extends AbstractValidatorTestcase
+class PropTypeValidatorTest extends FunctionalTestCase
 {
 
     public function setUp()
@@ -174,45 +174,6 @@ class PropTypeValidatorTest extends AbstractValidatorTestcase
             $this->assertTrue($validationResult->hasErrors());
         }
     }
-
-//    /**
-//     * @return array
-//     */
-//    public function numberExamples()
-//    {
-//        return [
-//            // valid
-//            [123, true],
-//            [0, true],
-//            [-123, true],
-//            [123.456, true],
-//            [0.456, true],
-//            [-123.4456, true],
-//
-//            [null, true],
-//            // invalid
-//            ['', false],
-//            [true, false],
-//            [false, false],
-//            [[], false]
-//        ];
-//    }
-//
-//    /**
-//     * @test
-//     * @dataProvider numberExamples
-//     */
-//    public function validatorEnforcesNumber($value, $expectSucces)
-//    {
-//        $this->validator->getNumber();
-//        $validationResult = $this->validator->validate($value);
-//
-//        if ($expectSucces) {
-//            $this->assertFalse($validationResult->hasErrors());
-//        } else {
-//            $this->assertTrue($validationResult->hasErrors());
-//        }
-//    }
 
     /**
      * @return array
