@@ -41,6 +41,8 @@ class FlowQueryValidator extends AbstractValidator
             return;
         }
 
-        $this->addError('The value is expected to satisfy the %s flowQuery condition.', 1515144113, [$this->options['condition']]);
+        $this->addError('The value is expected to satisfy the %s flowQuery condition.', 1515144113, [
+            $this->options['condition']
+        ]);
     }
 }
