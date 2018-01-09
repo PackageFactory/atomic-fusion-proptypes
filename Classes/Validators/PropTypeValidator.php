@@ -100,10 +100,10 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
     }
 
     /**
-     * @param array ...$values
+     * @param array $values
      * @return $this
      */
-    public function oneOf(...$values)
+    public function oneOf(array $values)
     {
         $this->addValidator(new OneOfValidator(['values' => $values]));
         return $this;
