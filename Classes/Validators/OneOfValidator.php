@@ -34,6 +34,12 @@ class OneOfValidator extends AbstractValidator
             return;
         }
 
-        $this->addError('One of %s is expected.', 1514999090, [json_encode($this->options['values'])]);
+        $errorMessage = 'One of %s is expected.';
+
+        if (is_string($value)) {
+            $errorMessage .= sprintf(' Got "%s" instead.', $value);
+        }
+
+        $this->addError($errorMessage, 1514999090, [json_encode($this->options['values'])]);
     }
 }
