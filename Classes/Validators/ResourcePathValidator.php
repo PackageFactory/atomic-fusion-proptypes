@@ -26,7 +26,8 @@ class ResourcePathValidator extends AbstractValidator
         }
 
         if (is_string($value) === false || file_exists($value) === false) {
-            $this->addError("The given value was no valid resource-path", 1515053653);
+            $valueMessage = is_string($value) ? sprintf('"%s"', $value) : 'The given value';
+            $this->addError($valueMessage . ' is no valid resource-path', 1515053653);
         }
     }
 }
