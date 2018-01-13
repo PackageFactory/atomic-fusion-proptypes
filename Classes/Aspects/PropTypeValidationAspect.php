@@ -7,6 +7,7 @@ use Neos\Flow\Aop\JoinPointInterface;
 use Neos\Fusion\Exception as FusionException;
 use Neos\Error\Messages\Result;
 use Neos\Flow\Validation\Validator\ValidatorInterface;
+use Neos\Utility\ObjectAccess;
 
 /**
  * @Flow\Scope("singleton")
@@ -65,7 +66,15 @@ class PropTypeValidationAspect
                 $message .= sprintf('%s: %s', $path, implode(', ', $errors));
             }
 
-            throw new FusionException(sprintf('The @propTypes-validation returned the following errors: %s', $message));
+            $prototypeName = ObjectAccess::getProperty($fusionComponentImplementation, 'fusionObjectName', true);
+            $path = ObjectAccess::getProperty($fusionComponentImplementation, 'path', true);
+
+            throw new FusionException(sprintf(
+                'The @propTypes-validation for %s at path "%s" returned the following errors: %s',
+                $prototypeName,
+                $path,
+                $message
+            ));
         }
         return $joinPoint->getAdviceChain()->proceed($joinPoint);
     }
