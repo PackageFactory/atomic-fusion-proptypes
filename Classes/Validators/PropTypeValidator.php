@@ -14,7 +14,6 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
 {
 
     const VALID_EEL_METHODS = [
-        'getIsRequired',
         'getString',
         'getBoolean',
         'getInteger',
@@ -159,6 +158,6 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
      */
     public function allowsCallOfMethod($methodName)
     {
-        return in_array($methodName, self::VALID_EEL_METHODS) ;
+        return $methodName == 'getIsRequired';
     }
 }
