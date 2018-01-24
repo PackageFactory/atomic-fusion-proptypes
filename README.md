@@ -27,6 +27,7 @@ prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
         stringOrInt = ${PropTypes.anyOf(PropTypes.string, PropTypes.integer).isRequired}
 
         flowQuery = ${PropTypes.flowQuery('[instanceof Neos.Neos:Document]').isRequired}
+        file = ${PropTypes.fileExists.isRequired}
 
         instance = ${PropTypes.instanceOf('Neos.Neos:Document').isRequired}
     }
@@ -61,6 +62,8 @@ via.
 * `PropTypes.shape({'foo': PropTypes.integer, 'bar': PropTypes.string})`:
    Validate the keys of the given array validate with the assigned Validator,
    accepts null and ignores all other keys. The key validators have to define wether a single key is required.
+* `PropTypes.fileExists`:
+   Validate that a given value is an existing file.
 * `PropTypes.instanceOf('Neos.Neos:Document')`:
    Validate the value with the given type, if the value is a Node the NodeType is checked instead of the cass, accepts null.
 

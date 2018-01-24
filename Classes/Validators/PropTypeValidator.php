@@ -19,7 +19,7 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
         'getInteger',
         'getFloat',
         'getNumber',
-        'getResourcePath',
+        'getFileExists',
         'instanceOf',
         'regex',
         'arrayOf',
@@ -82,9 +82,9 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
     /**
      * @return $this
      */
-    public function getResourcePath()
+    public function getFileExists()
     {
-        $this->addValidator(new ResourcePathValidator());
+        $this->addValidator(new FileExistsValidator());
         return $this;
     }
 
@@ -143,12 +143,21 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
     }
 
     /**
-     * @param string $condition
      * @return $this
      */
-    public function flowQuery($condition)
+    public function getFileExists()
     {
-        $this->addValidator(new FlowQueryValidator(['condition' => $condition]));
+        $this->addValidator(new FileExistsValidator());
+        return $this;
+    }
+
+    /**
+     * @param string $type
+     * @return $this
+     */
+    public function instanceOf($type)
+    {
+        $this->addValidator(new InstanceOfValidator(['type' => $type]));
         return $this;
     }
 

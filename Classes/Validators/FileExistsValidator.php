@@ -11,7 +11,7 @@ use PackageFactory\AtomicFusion\PropTypes\Eel\PropTypesValidator;
  *
  * @api
  */
-class ResourcePathValidator extends AbstractValidator
+class FileExistsValidator extends AbstractValidator
 {
     /**
      * Checks if the given value is accepted.
@@ -25,7 +25,7 @@ class ResourcePathValidator extends AbstractValidator
             return;
         }
 
-        if (is_string($value) === false || file_exists($value) === false) {
+        if (is_string($value) === false || file_exists($value) === false || is_file($value) === false) {
             $valueMessage = is_string($value) ? sprintf('"%s"', $value) : 'The given value';
             $this->addError($valueMessage . ' is no valid resource-path', 1515053653);
         }
