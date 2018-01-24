@@ -15,6 +15,7 @@
     "require": {
         "php": "^7.0",
         "neos/fusion": "^3.3",
+        "neos/content-repository": "^3.3",
         "packagefactory/atomicfusion-proptypes": "dev-master"
     },
     "require-dev": {

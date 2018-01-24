@@ -27,6 +27,8 @@ prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
         stringOrInt = ${PropTypes.anyOf(PropTypes.string, PropTypes.integer).isRequired}
 
         flowQuery = ${PropTypes.flowQuery('[instanceof Neos.Neos:Document]').isRequired}
+
+        instance = ${PropTypes.instanceOf('Neos.Neos:Document').isRequired}
     }
 }
 ```
@@ -59,7 +61,7 @@ via.
 * `PropTypes.shape({'foo': PropTypes.integer, 'bar': PropTypes.string})`:
    Validate the keys of the given array validate with the assigned Validator,
    accepts null and ignores all other keys. The key validators have to define wether a single key is required.
-* `PropTypes.flowQuery('[instanceof Neos.Neos:Document]')`:
+* `PropTypes.instanceOf('Neos.Neos:Document')`:
    Validate the value with the given flowQuery-filter, accepts null.
 
 ## How it works

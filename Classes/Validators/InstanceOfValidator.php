@@ -8,7 +8,7 @@ use Neos\Eel\FlowQuery\FlowQuery;
 /**
  * Validator for flowQueries.
  */
-class FlowQueryValidator extends AbstractValidator
+class InstanceOfValidator extends AbstractValidator
 {
     protected $acceptsEmptyValues = false;
 
@@ -16,7 +16,7 @@ class FlowQueryValidator extends AbstractValidator
      * @var array
      */
     protected $supportedOptions = [
-        'condition' => array(null, 'The expected condition that is passed to the flowQuery-is statement', 'string')
+        'type' => array(null, 'The expected type', 'string')
     ];
 
     /**
@@ -37,12 +37,12 @@ class FlowQueryValidator extends AbstractValidator
 
         $q = new FlowQuery($context);
 
-        if ($q->is($this->options['condition'])) {
+        if ($q->is('[instanceof ' . $this->options['type'] . ']')) {
             return;
         }
 
         $this->addError('The value is expected to satisfy the %s flowQuery condition.', 1515144113, [
-            $this->options['condition']
+            $this->options['type']
         ]);
     }
 }

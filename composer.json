@@ -26,7 +26,7 @@
     },
     "scripts": {
         "test:prepare": [
-            "rsync -av --exclude='Build' --exclude='.git' ./ Build/Travis/DistributionPackages/PackageFactory.AtomicFusion.PropTypes",
+            "rsync -av --exclude='Build' --exclude='.git' --delete ./ Build/Travis/DistributionPackages/PackageFactory.AtomicFusion.PropTypes",
             "cd Build/Travis && composer install",
             "rm -f Build/Travis/Configuration/PackageStates.php",
             "rm -f Build/Travis/Configuration/Routes.yaml",

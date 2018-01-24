@@ -21,12 +21,12 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
         'getFloat',
         'getNumber',
         'getResourcePath',
+        'instanceOf',
         'regex',
         'arrayOf',
         'shape',
         'anyOf',
         'oneOf',
-        'flowQuery'
     ];
 
     /**
