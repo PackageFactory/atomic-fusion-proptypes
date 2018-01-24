@@ -2,7 +2,7 @@
 
 > Validate the props passed to a component via `@propType` annotation
 
-The syntax for the propType annotation is derived from the react-propTypes.
+The syntax for the propType annotation is derived from react-propTypes.
 
 ATTENTION: This package is by default only active in development-context.
 
