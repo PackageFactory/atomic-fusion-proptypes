@@ -12,25 +12,25 @@ prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
 
         any = ${PropTypes.any.isRequired}
 
-        flag = ${PropTypes.boolean.isRequired}
+        flag = ${PropTypes.boolean}
 
-        string = ${PropTypes.string.isRequired}
+        string = ${PropTypes.string}
 
-        integer = ${PropTypes.integer.isRequired}
+        integer = ${PropTypes.integer}
 
-        regex = ${PropTypes.regex('/.*regex.*/').isRequired}
+        regex = ${PropTypes.regex('/.*regex.*/')}
 
-        fooOrBar = ${PropTypes.oneOf(["foo", "bar"]).isRequired}
+        fooOrBar = ${PropTypes.oneOf(["foo", "bar"])}
 
         arrayOfIntegers = ${PropTypes.arrayOf( PropTypes.integer )}
 
-        shape = ${PropTypes.shape({'foo': PropTypes.integer, 'bar': PropTypes.string}).isRequired}
+        shape = ${PropTypes.shape({'foo': PropTypes.integer, 'bar': PropTypes.string})}
 
-        stringOrInt = ${PropTypes.anyOf(PropTypes.string, PropTypes.integer).isRequired}
+        stringOrInt = ${PropTypes.anyOf(PropTypes.string, PropTypes.integer)}
 
-        file = ${PropTypes.fileExists.isRequired}
+        file = ${PropTypes.fileExists}
 
-        instance = ${PropTypes.instanceOf('Neos.Neos:Document').isRequired}
+        instance = ${PropTypes.instanceOf('Neos.Neos:Document')}
     }
 }
 ```
@@ -64,7 +64,9 @@ via.
 * `PropTypes.fileExists`:
    Validate that a given value is an existing file.
 * `PropTypes.instanceOf('Neos.Neos:Document')`:
-   Validate the value with the given type, if the value is a Node the NodeType is checked instead of the cass, accepts null.
+   Validate the value with the given type, if the value is a Node the NodeType is checked instead of the php-class, accepts null.
+
+### Making values mandatory
 
 * `PropTypes.*.isRequired`:
    To ensure a value is given the is isRequired method that is called on the result of the former items
