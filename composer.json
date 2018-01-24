@@ -34,17 +34,12 @@
         ],
         "test:unit": [
             "composer test:prepare",
-            "Build/Travis/bin/phpunit --coverage-clover=coverage.xml --verbose -c Build/Travis/unit-tests.xml"
+            "Build/Travis/bin/phpunit --verbose -c Build/Travis/unit-tests.xml"
         ],
         "test:functional": [
             "composer test:prepare",
             "cd Build/Travis && FLOW_CONTEXT=Testing ./flow flow:cache:flush",
             "Build/Travis/bin/phpunit --verbose -c Build/Travis/functional-tests.xml"
-        ],
-        "test:coverage": [
-            "composer test:prepare",
-            "Build/Travis/bin/phpunit --coverage-html=Build/Reports/Coverage -c Build/Travis/phpunit.xml",
-            "xdg-open Build/Reports/Coverage/index.html"
         ],
         "test": [
             "composer test:unit",
