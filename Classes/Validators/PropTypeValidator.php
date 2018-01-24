@@ -14,6 +14,7 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
 {
 
     const VALID_EEL_METHODS = [
+        'getAny',
         'getString',
         'getBoolean',
         'getInteger',
@@ -25,7 +26,7 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
         'arrayOf',
         'shape',
         'anyOf',
-        'oneOf',
+        'oneOf'
     ];
 
     /**
@@ -33,6 +34,14 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
      * @Flow\Inject
      */
     protected $conjunctionValidator;
+
+    /**
+     * @return $this
+     */
+    public function getAny()
+    {
+        return $this;
+    }
 
     /**
      * @return $this
@@ -139,15 +148,6 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
     public function shape($shape)
     {
         $this->addValidator(new ShapeValidator(['shape' => $shape]));
-        return $this;
-    }
-
-    /**
-     * @return $this
-     */
-    public function getFileExists()
-    {
-        $this->addValidator(new FileExistsValidator());
         return $this;
     }
 

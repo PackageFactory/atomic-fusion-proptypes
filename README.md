@@ -10,6 +10,8 @@ ATTENTION: This package is by default only active in development-context.
 prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
     @propTypes {
 
+        any = ${PropTypes.any.isRequired}
+
         flag = ${PropTypes.boolean.isRequired}
 
         string = ${PropTypes.string.isRequired}
@@ -26,7 +28,6 @@ prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
 
         stringOrInt = ${PropTypes.anyOf(PropTypes.string, PropTypes.integer).isRequired}
 
-        flowQuery = ${PropTypes.flowQuery('[instanceof Neos.Neos:Document]').isRequired}
         file = ${PropTypes.fileExists.isRequired}
 
         instance = ${PropTypes.instanceOf('Neos.Neos:Document').isRequired}
@@ -39,8 +40,8 @@ via.
 
 ## Methods that are supported by the propTypes helper
 
-* `PropTypes.isRequired`:
-   Use notEmpty validator to ensure that a value is given.
+* `PropTypes.any`:
+   Accepts any value including null.
 * `PropTypes.boolean`:
    Validate that a boolean value is given, accepts null.
 * `PropTypes.integer`:
@@ -49,8 +50,6 @@ via.
    Validate that an float is given, accepts null.
 * `PropTypes.string`:  
    Validate that an string is given, accepts null.
-* `PropTypes.resourcePath`:
-   Validate that a valid resourePath is given, accepts null.
 * `PropTypes.regex('/pattern/')`:
    Validate that the given string matches the pattern
 * `PropTypes.oneOf([123, "foo", "bar"])`:
@@ -66,6 +65,10 @@ via.
    Validate that a given value is an existing file.
 * `PropTypes.instanceOf('Neos.Neos:Document')`:
    Validate the value with the given type, if the value is a Node the NodeType is checked instead of the cass, accepts null.
+
+* `PropTypes.*.isRequired`:
+   To ensure a value is given the is isRequired method that is called on the result of the former items
+   add a notEmpty validator to ensure that a value was given.
 
 ## How it works
 
