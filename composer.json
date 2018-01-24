@@ -4,7 +4,7 @@
     "name": "packagefactory/atomicfusion-proptypes",
     "license": "GPL-3.0",
     "require": {
-        "neos/fusion": "*"
+        "neos/fusion": "^3.0.0"
     },
     "autoload": {
         "psr-4": {
@@ -19,6 +19,36 @@
     "extra": {
         "neos": {
             "package-key": "PackageFactory.AtomicFusion.PropTypes"
+        },
+        "branch-alias": {
+            "dev-current": "self.version"
         }
+    },
+    "scripts": {
+        "test:prepare": [
+            "rsync -av --exclude='Build' --exclude='.git' ./ Build/Travis/DistributionPackages/PackageFactory.AtomicFusion.PropTypes",
+            "cd Build/Travis && composer install",
+            "rm -f Build/Travis/Configuration/PackageStates.php",
+            "rm -f Build/Travis/Configuration/Routes.yaml",
+            "cp Build/Travis/Routes.yaml Build/Travis/Configuration/"
+        ],
+        "test:unit": [
+            "composer test:prepare",
+            "Build/Travis/bin/phpunit --coverage-clover=coverage.xml --verbose -c Build/Travis/unit-tests.xml"
+        ],
+        "test:functional": [
+            "composer test:prepare",
+            "cd Build/Travis && FLOW_CONTEXT=Testing ./flow flow:cache:flush",
+            "Build/Travis/bin/phpunit --verbose -c Build/Travis/functional-tests.xml"
+        ],
+        "test:coverage": [
+            "composer test:prepare",
+            "Build/Travis/bin/phpunit --coverage-html=Build/Reports/Coverage -c Build/Travis/phpunit.xml",
+            "xdg-open Build/Reports/Coverage/index.html"
+        ],
+        "test": [
+            "composer test:unit",
+            "composer test:functional"
+        ]
     }
 }

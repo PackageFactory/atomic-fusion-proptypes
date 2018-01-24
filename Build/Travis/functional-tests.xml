@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<phpunit
+		beStrictAboutChangesToGlobalState="true"
+		beStrictAboutTestsThatDoNotTestAnything="true"
+		beStrictAboutOutputDuringTests="true"
+		bootstrap="Build/BuildEssentials/PhpUnit/FunctionalTestBootstrap.php"
+		convertErrorsToExceptions="true"
+		convertNoticesToExceptions="true"
+		convertWarningsToExceptions="true"
+		timeoutForSmallTests="0">
+	<testsuites>
+		<testsuite name="All tests">
+			<directory>Packages/Application/PackageFactory.AtomicFusion.PropTypes/Tests/Functional</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+        <whitelist addUncoveredFilesFromWhitelist="false">
+			<directory>Data/Temporary/Testing/Cache/Flow_Object_Classes</directory>
+		</whitelist>
+	</filter>
+	<logging>
+		<log type="junit" target="Build/Reports/UnitTests.xml" logIncompleteSkipped="false"/>
+	</logging>
+	<php>
+		<ini name="date.timezone" value="Europe/Berlin" />
+		<env name="FLOW_REWRITEURLS" value="1"/>
+	</php>
+</phpunit>

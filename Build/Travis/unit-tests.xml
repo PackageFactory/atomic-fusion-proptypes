@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<phpunit
+		beStrictAboutChangesToGlobalState="true"
+		beStrictAboutTestsThatDoNotTestAnything="true"
+		beStrictAboutOutputDuringTests="true"
+		bootstrap="Build/BuildEssentials/PhpUnit/UnitTestBootstrap.php"
+		convertErrorsToExceptions="true"
+		convertNoticesToExceptions="true"
+		convertWarningsToExceptions="true"
+		timeoutForSmallTests="0">
+	<testsuites>
+		<testsuite name="All tests">
+			<directory>Packages/Application/PackageFactory.AtomicFusion.PropTypes/Tests/Unit</directory>
+		</testsuite>
+	</testsuites>
+	<filter>
+		<whitelist addUncoveredFilesFromWhitelist="true">
+			<directory>Packages/Application/PackageFactory.AtomicFusion.PropTypes/Classes</directory>
+		</whitelist>
+	</filter>
+	<logging>
+		<log type="junit" target="Build/Reports/UnitTests.xml" logIncompleteSkipped="false"/>
+	</logging>
+	<php>
+		<ini name="date.timezone" value="Europe/Berlin" />
+	</php>
+</phpunit>
