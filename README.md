@@ -76,6 +76,11 @@ PackageFactory:
     PropTypes:
       enable: false
 ```
+## Installation
+
+PackageFactory.AtomicFusion.PropTypes is available via packagist. Just run `composer require packagefactory/atomicfusion-proptypes`.
+
+We use semantic-versioning so every breaking change will increase the major-version number.
 
 ## License
 
