@@ -1,36 +1,14 @@
 # PackageFactory.AtomicFusion.PropTypes
 
-> Validate the props passed to a component via `@propType` annotation
+> Validate the props passed to a component via `@propType` annotation. The syntax for the propType annotation is derived from react-propTypes.
 
-The syntax for the propType annotation is derived from react-propTypes.
-
-ATTENTION: This package is by default only active in development-context.
+*ATTENTION: This package is by default only active in development-context.*
 
 ```
 prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
     @propTypes {
-
-        any = ${PropTypes.any.isRequired}
-
-        flag = ${PropTypes.boolean}
-
-        string = ${PropTypes.string}
-
-        integer = ${PropTypes.integer}
-
-        regex = ${PropTypes.regex('/.*regex.*/')}
-
-        fooOrBar = ${PropTypes.oneOf(["foo", "bar"])}
-
-        arrayOfIntegers = ${PropTypes.arrayOf( PropTypes.integer )}
-
-        shape = ${PropTypes.shape({'foo': PropTypes.integer, 'bar': PropTypes.string})}
-
-        stringOrInt = ${PropTypes.anyOf(PropTypes.string, PropTypes.integer)}
-
-        file = ${PropTypes.fileExists}
-
-        instance = ${PropTypes.instanceOf('Neos.Neos:Document')}
+        title = ${PropTypes.string.isRequired}
+        subtitle = ${PropTypes.string}
     }
 }
 ```
@@ -69,8 +47,8 @@ via.
 ### Making values mandatory
 
 * `PropTypes.*.isRequired`:
-   To ensure a value is given the is isRequired method that is called on the result of the former items
-   add a notEmpty validator to ensure that a value was given.
+   To ensure a value is given the isRequired-method can be called after the type-validation. 
+   This adds an additional notEmpty validator to enforce that a value is given.
 
 ## How it works
 
