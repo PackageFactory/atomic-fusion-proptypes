@@ -19,9 +19,6 @@
     "extra": {
         "neos": {
             "package-key": "PackageFactory.AtomicFusion.PropTypes"
-        },
-        "branch-alias": {
-            "dev-current": "self.version"
         }
     },
     "scripts": {
