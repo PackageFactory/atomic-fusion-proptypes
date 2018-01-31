@@ -2,7 +2,7 @@
     "description": "Fusion port of react-propTypes for the fusion-prototypes PackageFactory.AtomicFusion:Component and Neos.Fusion:Component",
     "type": "neos-package",
     "name": "packagefactory/atomicfusion-proptypes",
-    "license": "GPL-3.0",
+    "license": "GPL-3.0-or-later",
     "require": {
         "neos/fusion": "^3.0.0"
     },
