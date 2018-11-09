@@ -25,6 +25,7 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
         'regex',
         'arrayOf',
         'shape',
+        'dataStructure',
         'anyOf',
         'oneOf'
     ];
@@ -148,6 +149,16 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
     public function shape($shape)
     {
         $this->addValidator(new ShapeValidator(['shape' => $shape]));
+        return $this;
+    }
+
+    /**
+     * @param array $arguments
+     * @return $this
+     */
+    public function dataStructure($shape)
+    {
+        $this->addValidator(new DataStructureValidator(['dataStructure' => $shape]));
         return $this;
     }
 

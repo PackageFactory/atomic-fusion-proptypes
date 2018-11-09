@@ -36,6 +36,9 @@ via.
    Validate an array was given and all validate with the given validator, accepts null.
 * `PropTypes.anyOf( PropTypes.string, PropTypes.integer )`:
    Validate the value validates at least with one of the given validators, accepts null..
+* `PropTypes.dataStructure({'foo': PropTypes.integer, 'bar': PropTypes.string})`:
+   Validate the keys of the given array validate with the assigned Validator,
+   accepts null and ignores all other keys. The key validators have to define wether a single key is required.
 * `PropTypes.shape({'foo': PropTypes.integer, 'bar': PropTypes.string})`:
    Validate the keys of the given array validate with the assigned Validator,
    accepts null and ignores all other keys. The key validators have to define wether a single key is required.
