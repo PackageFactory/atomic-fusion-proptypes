@@ -61,7 +61,7 @@ class PropTypeValidationAspect
 
         if ($result->hasErrors()) {
             $prototypeName = ObjectAccess::getProperty($fusionComponentImplementation, 'fusionObjectName', true);
-            $exception = new PropTypeException(sprintf('PropType validation for prototype %s failed', $prototypeName));
+            $exception = new PropTypeException(sprintf('The PropType validation for prototype %s failed', $prototypeName));
             $exception->setResult($result);
             throw $exception;
         }

@@ -39,7 +39,7 @@ class ArrayOfValidator extends AbstractValidator
             foreach ($value as $key => $item) {
                 $itemResult = $itemValidator->validate($item);
                 if ($itemResult->hasErrors()) {
-                    $this->addError('Item %s is not valid', 1515003545, [$key]);
+                    $this->result->forProperty($key)->merge($itemResult);
                 }
             }
         } else {

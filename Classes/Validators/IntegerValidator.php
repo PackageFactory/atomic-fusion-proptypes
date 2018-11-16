@@ -22,6 +22,6 @@ class IntegerValidator extends AbstractValidator
         if (is_null($value) || is_int($value)) {
             return;
         }
-        $this->addError('A valid float is expected.', 1514998717);
+        $this->addError('A valid integer is expected.', 1514998717);
     }
 }
