@@ -49,7 +49,7 @@ class DataStructureValidator extends AbstractValidator
                 if ($subValidator instanceof ValidatorInterface) {
                     $subResult = $subValidator->validate($subValue);
                     if ($subResult->hasErrors()) {
-                        $this->addError('DataStructure-Property %s is not valid', 1515003533, [$key]);
+                        $this->result->forProperty($key)->merge($subResult);
                     }
                 }
             }

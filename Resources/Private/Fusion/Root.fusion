@@ -1,0 +1,8 @@
+// this is only included in dev context
+prototype(Neos.Fusion:Component) {
+    @exceptionHandler = 'PackageFactory\\AtomicFusion\\PropTypes\\Error\\ExceptionHandler\\PropTypeExceptionHandler'
+}
+
+prototype(PackageFactory.AtomicFusion:Component) {
+    @exceptionHandler = 'PackageFactory\\AtomicFusion\\PropTypes\\Error\\ExceptionHandler\\PropTypeExceptionHandler'
+}

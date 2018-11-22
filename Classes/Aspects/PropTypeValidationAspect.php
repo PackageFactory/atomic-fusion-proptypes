@@ -4,7 +4,7 @@ namespace PackageFactory\AtomicFusion\PropTypes\Aspects;
 use Neos\Error\Messages\Error;
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Aop\JoinPointInterface;
-use Neos\Fusion\Exception as FusionException;
+use PackageFactory\AtomicFusion\PropTypes\Error\Exception\PropTypeException;
 use Neos\Error\Messages\Result;
 use Neos\Flow\Validation\Validator\ValidatorInterface;
 use Neos\Utility\ObjectAccess;
@@ -60,21 +60,10 @@ class PropTypeValidationAspect
         }
 
         if ($result->hasErrors()) {
-            $message = '';
-            $flattenedErrors = $result->getFlattenedErrors();
-            foreach ($flattenedErrors as $path => $errors) {
-                $message .= sprintf('%s: %s', $path, implode(', ', $errors));
-            }
-
             $prototypeName = ObjectAccess::getProperty($fusionComponentImplementation, 'fusionObjectName', true);
-            $path = ObjectAccess::getProperty($fusionComponentImplementation, 'path', true);
-
-            throw new FusionException(sprintf(
-                'The @propTypes-validation for %s at path "%s" returned the following errors: %s',
-                $prototypeName,
-                $path,
-                $message
-            ));
+            $exception = new PropTypeException(sprintf('The PropType validation for prototype %s failed', $prototypeName));
+            $exception->setResult($result);
+            throw $exception;
         }
         return $joinPoint->getAdviceChain()->proceed($joinPoint);
     }
