@@ -16,7 +16,7 @@ use Neos\Utility\ObjectAccess;
 class PropTypeValidationAspect
 {
     /**
-     * @Flow\Around("setting(PackageFactory.AtomicFusion.PropTypes.enable) && method(Neos\Fusion\FusionObjects\ComponentImplementation->evaluate())")
+     * @Flow\Around("setting(PackageFactory.AtomicFusion.PropTypes.enable) && method(Neos\Fusion\FusionObjects\ComponentImplementation->getProps())")
      * @param JoinPointInterface $joinPoint The current join point
      * @return mixed
      */
@@ -26,7 +26,7 @@ class PropTypeValidationAspect
     }
 
     /**
-     * @Flow\Around("setting(PackageFactory.AtomicFusion.PropTypes.enable) && method(PackageFactory\AtomicFusion\FusionObjects\ComponentImplementation->evaluate())")
+     * @Flow\Around("setting(PackageFactory.AtomicFusion.PropTypes.enable) && method(PackageFactory\AtomicFusion\FusionObjects\ComponentImplementation->getProps())")
      * @param JoinPointInterface $joinPoint The current join point
      * @return mixed
      */
@@ -42,29 +42,56 @@ class PropTypeValidationAspect
     protected function validateFusionPropTypes(JoinPointInterface $joinPoint)
     {
         $fusionComponentImplementation = $joinPoint->getProxy();
+        $strictMode = $fusionComponentImplementation['__meta/propTypes/__meta/strict'];
         $validators = $fusionComponentImplementation['__meta/propTypes<Neos.Fusion:RawArray>'];
-        $result  = new Result();
+        $props = $joinPoint->getAdviceChain()->proceed($joinPoint);
+
+        $validationResult = new Result();
+        $validatedPropNames = [];
+
+        // lazy prop validation
         foreach ($validators as $propName => $validator) {
+            $propValue = $props[$propName] ?? null;
             if ($validator instanceof ValidatorInterface) {
-                $result->forProperty($propName)->merge($validator->validate($fusionComponentImplementation[$propName]));
+                $validationResult->forProperty($propName)->merge($validator->validate($propValue));
             } else {
-                $result->forProperty($propName)->addError(
+                $validationResult->forProperty($propName)->addError(
                     new Error(
                         sprintf(
-                            '@propTypes are expected implement the ValidatorInterface %s found instead',
-                            (is_object($validator) ? get_class($validator) : gettype($validator))
+                            'propType for prop %s must implement the ValidatorInterface %s found instead',
+                            $propName, (is_object($validator) ? get_class($validator) : gettype($validator))
                         )
                     )
                 );
             }
+            $validatedPropNames[] = $propName;
         }
 
-        if ($result->hasErrors()) {
+        // strict prop validation
+        if ($strictMode === true) {
+            foreach ($props as $propName => $propValue) {
+                if (!in_array($propName, $validatedPropNames)) {
+                    $validationResult->forProperty($propName)->addError(
+                        new Error(
+                            sprintf(
+                                'propType for prop %s is not declared but %s is passed',
+                                $propName,
+                                gettype($propValue)
+                            )
+                        )
+                    );
+                }
+            }
+        }
+
+        if ($validationResult->hasErrors()) {
             $prototypeName = ObjectAccess::getProperty($fusionComponentImplementation, 'fusionObjectName', true);
             $exception = new PropTypeException(sprintf('The PropType validation for prototype %s failed', $prototypeName));
-            $exception->setResult($result);
+            $exception->setResult($validationResult);
             throw $exception;
         }
-        return $joinPoint->getAdviceChain()->proceed($joinPoint);
+
+        return $props;
     }
+
 }

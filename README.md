@@ -7,6 +7,9 @@
 ```
 prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
     @propTypes {
+        # optional, enforce that only validated props exist
+        @strict = true
+        # validation rules for props
         title = ${PropTypes.string.isRequired}
         subtitle = ${PropTypes.string}
     }
@@ -66,7 +69,23 @@ The `PropTypes`-EelHelper is a wrapper around the `PackageFactory\AtomicFusion\P
 which is an EelHelper and Validator at the same time. This Object is creates an compound-validator that is
 controlled in a react-propTypes like syntax via eel.
 
-By creating FusionObjects or EelHelpers that return custom validators you can extend this mechanism if needed.  
+By creating FusionObjects or EelHelpers that return custom validators you can extend this mechanism if needed.
+
+### Strict mode
+
+In strict mode an error is thrown if an unvalidated prop is passed to
+a component in development context. This ensures that all props are validated.
+
+To enable strict mode for a component add `@strict = true` to the `@propTypes`.
+
+```
+prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
+    @propTypes {
+        @strict = true
+        ...
+    }
+}
+```
 
 ## Settings
 
