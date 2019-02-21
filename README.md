@@ -7,7 +7,7 @@
 ```
 prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
     @propTypes {
-        # optional, enforce that only valudated props exist
+        # optional, enforce that only validated props exist
         @strict = true
         # validation rules for props
         title = ${PropTypes.string.isRequired}
