@@ -1,0 +1,9 @@
+PackageFactory\AtomicFusion\PropTypes\Error\ExceptionHandler\PropTypeExceptionHandler:
+  properties:
+    systemLogger:
+      object:
+        factoryObjectName: Neos\Flow\Log\PsrLoggerFactoryInterface
+        factoryMethodName: get
+        arguments:
+          1:
+            value: 'systemLogger'

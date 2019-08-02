@@ -2,18 +2,15 @@
 
 namespace PackageFactory\AtomicFusion\PropTypes\Error\ExceptionHandler;
 
-use Neos\Error\Messages\Error;
-use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Log\SystemLoggerInterface;
 use Neos\Fusion\Core\ExceptionHandlers\BubblingHandler;
 use PackageFactory\AtomicFusion\PropTypes\Error\Exception\PropTypeException;
+use Psr\Log\LoggerInterface;
 
 class PropTypeExceptionHandler extends BubblingHandler
 {
 
     /**
-     * @var SystemLoggerInterface
-     * @Flow\Inject
+     * @var LoggerInterface
      */
     protected $systemLogger;
 
