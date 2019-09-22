@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "php": "^7.0",
+        "php": "^7.1",
         "neos/flow": "^5.2.0",
         "neos/fusion": "^4.2.0",
         "neos/content-repository": "^4.2.0",
