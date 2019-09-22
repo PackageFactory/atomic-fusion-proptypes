@@ -14,14 +14,15 @@
     ],
     "require": {
         "php": "^7.0",
-        "neos/fusion": "^3.3",
-        "neos/content-repository": "^3.3",
+        "neos/flow": "^5.2.0",
+        "neos/fusion": "^4.2.0",
+        "neos/content-repository": "^4.2.0",
         "packagefactory/atomicfusion-proptypes": "dev-master"
     },
     "require-dev": {
-        "neos/buildessentials": "~4.0.0",
+        "neos/buildessentials": "^4.2.0",
         "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "~5.4.0",
+        "phpunit/phpunit": "^7.0",
         "symfony/css-selector": "~2.0",
         "neos/behat": "dev-master"
     },

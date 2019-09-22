@@ -5,6 +5,7 @@ use Neos\Flow\Tests\Unit\Validation\Validator\AbstractValidatorTestcase;
 use PackageFactory\AtomicFusion\PropTypes\Validators\ArrayOfValidator;
 use Neos\Flow\Validation\Validator\ValidatorInterface;
 use Neos\Error\Messages\Result;
+use Neos\Error\Messages\Error;
 
 /**
  * Testcase for the boolean validator
@@ -106,8 +107,8 @@ class ArrayOfValidatorTest extends AbstractValidatorTestcase
     {
         $items = [1,2,3];
 
-        $mockErrorResult = $this->createMock(Result::class);
-        $mockErrorResult->expects($this->any())->method('hasErrors')->will($this->returnValue(true));
+        $mockErrorResult = new Result();
+        $mockErrorResult->addError(new Error('Error stub'));
 
         $mockItemValidator = $this->createMock(ValidatorInterface::class);
         $mockItemValidator->expects($this->any())->method('validate')->will($this->returnValue($mockErrorResult));

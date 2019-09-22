@@ -36,7 +36,7 @@
         "test:functional": [
             "composer test:prepare",
             "cd Build/Travis && FLOW_CONTEXT=Testing ./flow flow:cache:flush",
-            "Build/Travis/bin/phpunit --verbose -c Build/Travis/functional-tests.xml"
+            "FLOW_CONTEXT=Testing Build/Travis/bin/phpunit --verbose -c Build/Travis/functional-tests.xml"
         ],
         "test": [
             "composer test:unit",
