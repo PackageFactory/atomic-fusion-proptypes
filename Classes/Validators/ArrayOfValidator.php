@@ -2,6 +2,7 @@
 namespace PackageFactory\AtomicFusion\PropTypes\Validators;
 
 use Neos\Flow\Annotations as Flow;
+use Neos\Error\Messages\Result;
 use Neos\Flow\Validation\Validator\AbstractValidator;
 use Neos\Flow\Validation\Validator\ValidatorInterface;
 
@@ -36,10 +37,11 @@ class ArrayOfValidator extends AbstractValidator
          */
         $itemValidator = $this->options['itemValidator'];
         if (is_array($value) || ($value instanceof \Traversable)) {
+            $result = $this->getResult()?: new Result();
             foreach ($value as $key => $item) {
                 $itemResult = $itemValidator->validate($item);
                 if ($itemResult->hasErrors()) {
-                    $this->result->forProperty($key)->merge($itemResult);
+                    $result->forProperty($key)->merge($itemResult);
                 }
             }
         } else {
