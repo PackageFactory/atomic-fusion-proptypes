@@ -6,25 +6,19 @@
         "vendor-dir": "Packages/Libraries",
         "bin-dir": "bin"
     },
-    "repositories": [
-        {
-            "type": "path",
-            "url": "./DistributionPackages/*"
-        }
-    ],
     "require": {
-        "php": "^7.1",
-        "neos/flow": "^5.2.0",
-        "neos/fusion": "^4.2.0",
-        "neos/content-repository": "^4.2.0",
-        "packagefactory/atomicfusion-proptypes": "dev-master"
+        "php": "^7.2",
+        "neos/flow": "~6.0.0",
+        "neos/fusion": "~5.0.0",
+        "neos/content-repository": "~5.0.0",
+        "packagefactory/atomicfusion-proptypes": "*"
     },
     "require-dev": {
-        "neos/buildessentials": "^4.2.0",
-        "mikey179/vfsstream": "~1.6",
-        "phpunit/phpunit": "^7.0",
+        "neos/buildessentials": "6.0.x-dev",
+        "mikey179/vfsstream": "^1.6",
+        "phpunit/phpunit": "^8.1",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "dev-master"
+        "neos/behat": "@dev"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

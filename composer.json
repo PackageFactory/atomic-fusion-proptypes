@@ -100,8 +100,8 @@
     },
     "scripts": {
         "test:prepare": [
-            "rsync -av --exclude='Build' --exclude='.git' --delete ./ Build/Travis/DistributionPackages/PackageFactory.AtomicFusion.PropTypes",
             "cd Build/Travis && composer install",
+            "rsync -av --exclude='Build' --exclude='.git' --delete ./ ./Build/Travis/Packages/Application/PackageFactory.AtomicFusion.PropTypes",
             "rm -f Build/Travis/Configuration/PackageStates.php",
             "rm -f Build/Travis/Configuration/Routes.yaml",
             "cp Build/Travis/Routes.yaml Build/Travis/Configuration/"
@@ -113,6 +113,7 @@
         "test:functional": [
             "composer test:prepare",
             "cd Build/Travis && FLOW_CONTEXT=Testing ./flow flow:cache:flush",
+            "cd Build/Travis && FLOW_CONTEXT=Testing ./flow flow:package:rescan",
             "FLOW_CONTEXT=Testing Build/Travis/bin/phpunit --verbose -c Build/Travis/functional-tests.xml"
         ],
         "test": [

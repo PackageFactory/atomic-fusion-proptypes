@@ -19,7 +19,7 @@ class ArrayOfValidatorTest extends AbstractValidatorTestcase
      */
     protected $mockItemValidator;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         $mockSuccessResult = $this->createMock(Result::class);
         $mockSuccessResult->expects($this->any())->method('hasErrors')->will($this->returnValue(false));
