@@ -1,4 +1,5 @@
 # PackageFactory.AtomicFusion.PropTypes
+[![Build Status](https://travis-ci.org/PackageFactory/atomic-fusion-proptypes.svg?branch=master)](https://travis-ci.org/PackageFactory/atomic-fusion-proptypes)
 
 > Validate the props passed to a component via `@propType` annotation. The syntax for the propType annotation is derived from react-propTypes.
 
