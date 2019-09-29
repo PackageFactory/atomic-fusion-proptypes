@@ -5,6 +5,7 @@ use Neos\Flow\Tests\Unit\Validation\Validator\AbstractValidatorTestcase;
 use PackageFactory\AtomicFusion\PropTypes\Validators\ShapeValidator;
 use Neos\Flow\Validation\Validator\ValidatorInterface;
 use Neos\Error\Messages\Result;
+use Neos\Error\Messages\Error;
 
 /**
  * Testcase for the shape validator
@@ -19,7 +20,7 @@ class ShapeValidatorTest extends AbstractValidatorTestcase
     protected $mockItemValidator;
 
 
-    public function setUp()
+    protected function setUp(): void
     {
         $mockSuccessResult = $this->createMock(Result::class);
         $mockSuccessResult->expects($this->any())->method('hasErrors')->will($this->returnValue(false));
@@ -136,8 +137,8 @@ class ShapeValidatorTest extends AbstractValidatorTestcase
     {
         $shape = ['foo' => 123, 'bar' => 'string'];
 
-        $mockErrorResult = $this->createMock(Result::class);
-        $mockErrorResult->expects($this->any())->method('hasErrors')->will($this->returnValue(true));
+        $mockErrorResult = new Result();
+        $mockErrorResult->addError(new Error('Error stub'));
 
         $mockItemValidator = $this->createMock(ValidatorInterface::class);
         $mockItemValidator->expects($this->any())->method('validate')->will($this->returnValue($mockErrorResult));

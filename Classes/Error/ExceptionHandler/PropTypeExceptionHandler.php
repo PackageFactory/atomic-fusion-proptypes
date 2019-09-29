@@ -2,17 +2,27 @@
 
 namespace PackageFactory\AtomicFusion\PropTypes\Error\ExceptionHandler;
 
+use Neos\Error\Messages\Error;
+use Neos\Flow\Annotations as Flow;
 use Neos\Fusion\Core\ExceptionHandlers\BubblingHandler;
 use PackageFactory\AtomicFusion\PropTypes\Error\Exception\PropTypeException;
 use Psr\Log\LoggerInterface;
+use Neos\Flow\Log\ThrowableStorageInterface;
 
 class PropTypeExceptionHandler extends BubblingHandler
 {
 
     /**
      * @var LoggerInterface
+     * @Flow\Inject
      */
     protected $systemLogger;
+
+    /**
+     * @var ThrowableStorageInterface
+     * @Flow\Inject
+     */
+    protected $throwableStorage;
 
     /**
      * Whether or not to render technical details (i.e. the Fusion stacktrace) in the exception message
@@ -87,7 +97,9 @@ class PropTypeExceptionHandler extends BubblingHandler
             $messageBody
         );
 
-        $this->systemLogger->logException($exception);
+        $logMessage = $this->throwableStorage->logThrowable($exception);
+        $this->systemLogger->info($logMessage);
+
         return $message;
     }
 

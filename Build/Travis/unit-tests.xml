@@ -19,7 +19,7 @@
 		</whitelist>
 	</filter>
 	<logging>
-		<log type="junit" target="Build/Reports/UnitTests.xml" logIncompleteSkipped="false"/>
+		<log type="junit" target="Build/Reports/UnitTests.xml"/>
 	</logging>
 	<php>
 		<ini name="date.timezone" value="Europe/Berlin" />

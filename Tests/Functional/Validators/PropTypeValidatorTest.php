@@ -15,7 +15,7 @@ use Neos\Error\Messages\Result;
 class PropTypeValidatorTest extends FunctionalTestCase
 {
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->validator = new PropTypeValidator();
     }
