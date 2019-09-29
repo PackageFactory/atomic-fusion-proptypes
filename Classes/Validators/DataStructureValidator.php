@@ -2,6 +2,7 @@
 namespace PackageFactory\AtomicFusion\PropTypes\Validators;
 
 use Neos\Flow\Annotations as Flow;
+use Neos\Error\Messages\Result;
 use Neos\Flow\Validation\Validator\AbstractValidator;
 use Neos\Flow\Validation\Validator\ValidatorInterface;
 use Neos\Utility\ObjectAccess;
@@ -33,6 +34,7 @@ class DataStructureValidator extends AbstractValidator
         }
 
         if (is_array($value) || ($value instanceof \ArrayAccess) || is_object($value)) {
+            $result = $this->getResult() ?: new Result();
             foreach ($this->options['dataStructure'] as $key => $subValidator) {
                 if (is_array($value) || ($value instanceof \ArrayAccess)) {
                     if (array_key_exists($key, $value)) {
@@ -49,7 +51,7 @@ class DataStructureValidator extends AbstractValidator
                 if ($subValidator instanceof ValidatorInterface) {
                     $subResult = $subValidator->validate($subValue);
                     if ($subResult->hasErrors()) {
-                        $this->result->forProperty($key)->merge($subResult);
+                        $result->forProperty($key)->merge($subResult);
                     }
                 }
             }
