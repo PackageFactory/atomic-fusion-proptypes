@@ -16,7 +16,7 @@ use Neos\Utility\ObjectAccess;
 class PropTypeValidationAspect
 {
     /**
-     * @Flow\Around("setting(PackageFactory.AtomicFusion.PropTypes.enable) && method(Neos\Fusion\FusionObjects\ComponentImplementation->getProps())")
+     * @Flow\Around("setting(PackageFactory.AtomicFusion.PropTypes.enable) && within(Neos\Fusion\FusionObjects\ComponentImplementation) && method(.*->getProps())")
      * @param JoinPointInterface $joinPoint The current join point
      * @return mixed
      */
