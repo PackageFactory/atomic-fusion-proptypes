@@ -1,8 +1,31 @@
 // this is only included in dev context
+// todo not anymore
 prototype(Neos.Fusion:Component) {
     @exceptionHandler = 'PackageFactory\\AtomicFusion\\PropTypes\\Error\\ExceptionHandler\\PropTypeExceptionHandler'
 }
 
 prototype(PackageFactory.AtomicFusion:Component) {
     @exceptionHandler = 'PackageFactory\\AtomicFusion\\PropTypes\\Error\\ExceptionHandler\\PropTypeExceptionHandler'
+}
+
+prototype(PackageFactory.AtomicFusion.PropTypes:PropsFromComponent) < prototype(Neos.Fusion:Value) {
+    type = null
+    isRequired = false
+
+    @context.type = ${this.type}
+    value = Neos.Fusion:Renderer {
+        renderPath = ${'/<' + type + '>/__meta/propTypes<Neos.Fusion:DataStructure>'}
+        @process.propsArrayToPropTypes = ${PropTypes.dataStructure(value)}
+    }
+
+    @process.makeRequired = ${this.isRequired ? value.isRequired : value}
+    @process.makeRequired.@position = "end"
+
+}
+
+prototype(PackageFactory.AtomicFusion.PropTypes:ArrayOfPropsFromComponent) < prototype(PackageFactory.AtomicFusion.PropTypes:ForComponent) {
+    type = null
+    isRequired = false
+
+    @process.makeArrayOf = ${PropTypes.arrayOf(value)}
 }

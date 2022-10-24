@@ -7,3 +7,9 @@ Neos:
   Fusion:
     defaultContext:
       PropTypes: \PackageFactory\AtomicFusion\PropTypes\Eel\PropTypesHelper
+
+  Neos:
+    Neos:
+      fusion:
+        autoInclude:
+          'PackageFactory.AtomicFusion.PropTypes': true
