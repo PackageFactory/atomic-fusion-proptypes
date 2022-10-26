@@ -12,24 +12,6 @@ use Neos\Flow\Validation\Validator\ValidatorInterface;
 
 class PropTypeValidator extends ConjunctionValidator implements ProtectedContextAwareInterface
 {
-
-    const VALID_EEL_METHODS = [
-        'getAny',
-        'getString',
-        'getBoolean',
-        'getInteger',
-        'getFloat',
-        'getNumber',
-        'getFileExists',
-        'instanceOf',
-        'regex',
-        'arrayOf',
-        'shape',
-        'dataStructure',
-        'anyOf',
-        'oneOf'
-    ];
-
     /**
      * @var ConjunctionValidator
      * @Flow\Inject
