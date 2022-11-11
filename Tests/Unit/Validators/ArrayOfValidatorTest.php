@@ -65,11 +65,9 @@ class ArrayOfValidatorTest extends AbstractValidatorTestcase
     public function validatorCallsItemValidatorForeEachItemInArray()
     {
         $items = [1,2,3,'foo','bar'];
-        $this->mockItemValidator->expects($this->exactly(count($items)))->method('validate');
-        foreach ($items as $index => $value) {
-            $this->mockItemValidator->expects($this->at($index))->method('validate')->with($this->equalTo($value));
-        }
-
+        $this->mockItemValidator->expects($this->exactly(count($items)))
+            ->method('validate')
+            ->withConsecutive([1],[2],[3],['foo'],['bar']);
         $validator = new ArrayOfValidator(['itemValidator' => $this->mockItemValidator]);
         $validator->validate($items);
     }
@@ -80,12 +78,9 @@ class ArrayOfValidatorTest extends AbstractValidatorTestcase
     public function validatorCallsItemValidatorForeEachItemInArrayObject()
     {
         $items = new \ArrayObject([1,2,3,'foo','bar']);
-
-        $this->mockItemValidator->expects($this->exactly(count($items)))->method('validate');
-        foreach ($items as $index => $value) {
-            $this->mockItemValidator->expects($this->at($index))->method('validate')->with($value);
-        }
-
+        $this->mockItemValidator->expects($this->exactly(count($items)))
+            ->method('validate')
+            ->withConsecutive([1],[2],[3],['foo'],['bar']);
         $validator = new ArrayOfValidator(['itemValidator' => $this->mockItemValidator]);
         $validator->validate($items);
     }

@@ -69,10 +69,7 @@ class DataStructureValidatorTest extends AbstractValidatorTestcase
     {
         $shape = ['foo' => 123, 'bar' => 'string'];
 
-        $this->mockItemValidator->expects($this->exactly(2))->method('validate');
-        $this->mockItemValidator->expects($this->at(0))->method('validate')->with(123);
-        $this->mockItemValidator->expects($this->at(1))->method('validate')->with('string');
-
+        $this->mockItemValidator->expects($this->exactly(2))->method('validate')->withConsecutive([123], ['string']);
         $this->validator->validate($shape);
     }
 
@@ -83,10 +80,7 @@ class DataStructureValidatorTest extends AbstractValidatorTestcase
     {
         $shape = new \ArrayObject(['foo' => 123, 'bar' => 'string']);
 
-        $this->mockItemValidator->expects($this->exactly(2))->method('validate');
-        $this->mockItemValidator->expects($this->at(0))->method('validate')->with(123);
-        $this->mockItemValidator->expects($this->at(1))->method('validate')->with('string');
-
+        $this->mockItemValidator->expects($this->exactly(2))->method('validate')->withConsecutive([123], ['string']);
         $this->validator->validate($shape);
     }
 
@@ -100,10 +94,7 @@ class DataStructureValidatorTest extends AbstractValidatorTestcase
         $shape->foo = 123;
         $shape->bar = 'string';
 
-        $this->mockItemValidator->expects($this->exactly(2))->method('validate');
-        $this->mockItemValidator->expects($this->at(0))->method('validate')->with(123);
-        $this->mockItemValidator->expects($this->at(1))->method('validate')->with('string');
-
+        $this->mockItemValidator->expects($this->exactly(2))->method('validate')->withConsecutive([123], ['string']);
         $this->validator->validate($shape);
     }
 
@@ -123,10 +114,7 @@ class DataStructureValidatorTest extends AbstractValidatorTestcase
             }
         };
 
-        $this->mockItemValidator->expects($this->exactly(2))->method('validate');
-        $this->mockItemValidator->expects($this->at(0))->method('validate')->with(123);
-        $this->mockItemValidator->expects($this->at(1))->method('validate')->with('string');
-
+        $this->mockItemValidator->expects($this->exactly(2))->method('validate')->withConsecutive([123], ['string']);
         $this->validator->validate($shape);
     }
 

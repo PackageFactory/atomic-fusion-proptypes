@@ -3,8 +3,4 @@ PackageFactory:
     PropTypes:
       enable: true
 
-Neos:
-  Neos:
-    fusion:
-      autoInclude:
-        'PackageFactory.AtomicFusion.PropTypes': true
+

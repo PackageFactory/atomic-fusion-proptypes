@@ -19,7 +19,7 @@ class DataStructureValidator extends AbstractValidator
      */
     protected $supportedOptions = [
         'dataStructure' => array([], 'The expected data-structure for this property', 'array')
-    ];
+     ];
 
     /**
      * Checks if the given value is accepted.
@@ -37,11 +37,7 @@ class DataStructureValidator extends AbstractValidator
             $result = $this->getResult() ?: new Result();
             foreach ($this->options['dataStructure'] as $key => $subValidator) {
                 if (is_array($value) || ($value instanceof \ArrayAccess)) {
-                    if (array_key_exists($key, $value)) {
-                        $subValue = $value[$key];
-                    } else {
-                        $subValue = null;
-                    }
+                    $subValue = $value[$key] ?? null;
                 } elseif (ObjectAccess::isPropertyGettable($value, $key)) {
                     $subValue = ObjectAccess::getPropertyPath($value, $key);
                 } else {
