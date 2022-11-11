@@ -5,7 +5,6 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Eel\ProtectedContextAwareInterface;
 use Neos\Flow\Validation\Validator\ConjunctionValidator;
 use Neos\Flow\Validation\Validator\DisjunctionValidator;
-use Neos\Flow\Validation\Validator\StringValidator;
 use Neos\Flow\Validation\Validator\RegularExpressionValidator;
 use Neos\Flow\Validation\Validator\NotEmptyValidator;
 use Neos\Flow\Validation\Validator\ValidatorInterface;
