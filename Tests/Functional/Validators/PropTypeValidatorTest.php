@@ -292,7 +292,7 @@ class PropTypeValidatorTest extends FunctionalTestCase
     /**
      * @return array
      */
-    public function shapeExamples()
+    public function dataStructureExamples()
     {
         $arrayObjectShape = new \ArrayObject(['foo' => 123, 'bar' => 'string']);
 
@@ -317,11 +317,11 @@ class PropTypeValidatorTest extends FunctionalTestCase
 
     /**
      * @test
-     * @dataProvider shapeExamples
+     * @dataProvider dataStructureExamples
      */
-    public function validatorEnforcesShape($value, $expectSucces)
+    public function validatorEnforcesDataStructure($value, $expectSucces)
     {
-        $this->validator->shape([
+        $this->validator->dataStructure([
             'foo' => new IntegerValidator(),
             'bar' => new StringValidator()
         ]);

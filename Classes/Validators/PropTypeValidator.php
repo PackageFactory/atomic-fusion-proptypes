@@ -148,7 +148,7 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
      */
     public function shape($shape)
     {
-        $this->addValidator(new ShapeValidator(['shape' => $shape]));
+        $this->addValidator(new DataStructureValidator(['dataStructure' => $shape]));
         return $this;
     }
 

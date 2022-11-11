@@ -10,10 +10,10 @@
         }
     },
     "require": {
-        "php": "^8.0",
-        "neos/flow": "~8.1.0",
-        "neos/fusion": "~8.1.0",
-        "neos/content-repository": "~8.1.0",
+        "php": ">7.4",
+        "neos/flow": "~7.3.0",
+        "neos/fusion": "~7.3.0",
+        "neos/content-repository": "~7.3.0",
         "packagefactory/atomicfusion-proptypes": "*"
     },
     "require-dev": {
