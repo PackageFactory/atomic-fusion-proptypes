@@ -10,14 +10,14 @@
         }
     },
     "require": {
-        "php": ">7.4",
-        "neos/flow": "~7.3.0",
-        "neos/fusion": "~7.3.0",
-        "neos/content-repository": "~7.3.0",
+        "php": ">8.0",
+        "neos/flow": "~8.0.0",
+        "neos/fusion": "~8.0.0",
+        "neos/content-repository": "~8.0.0",
         "packagefactory/atomicfusion-proptypes": "*"
     },
     "require-dev": {
-        "neos/buildessentials": "6.0.x-dev",
+        "neos/buildessentials": "8.0.x-dev",
         "mikey179/vfsstream": "^1.6",
         "symfony/css-selector": "~2.0",
         "neos/behat": "@dev",
