@@ -6,4 +6,4 @@ PackageFactory:
 Neos:
   Fusion:
     defaultContext:
-      PropTypes: \PackageFactory\AtomicFusion\PropTypes\Eel\PropTypesHelper
+      PropTypes: PackageFactory\AtomicFusion\PropTypes\Eel\PropTypesHelper
