@@ -1,28 +1,18 @@
-prototype(PackageFactory.AtomicFusion.PropTypes:DataStructure) {
-    @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\DataStructureImplementation'
-}
-
 prototype(PackageFactory.AtomicFusion.PropTypes:Int) {
   @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\IntImplementation'
 }
 
-prototype(PackageFactory.AtomicFusion.PropTypes:String) {
-  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\StringImplementation'
-  regularExpression = null
+prototype(PackageFactory.AtomicFusion.PropTypes:Float) {
+  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\FloatImplementation'
 }
 
 prototype(PackageFactory.AtomicFusion.PropTypes:Bool) {
   @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\BoolImplementation'
 }
 
-prototype(PackageFactory.AtomicFusion.PropTypes:InstanceOf) {
-  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\InstanceOfImplementation'
-  type = null
-}
-
-prototype(PackageFactory.AtomicFusion.PropTypes:ForPrototype) {
-  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\ForPrototypeImplementation'
-  prototype = null
+prototype(PackageFactory.AtomicFusion.PropTypes:String) {
+  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\StringImplementation'
+  regularExpression = null
 }
 
 prototype(PackageFactory.AtomicFusion.PropTypes:ArrayOf) {
@@ -35,6 +25,20 @@ prototype(PackageFactory.AtomicFusion.PropTypes:AnyOf) {
 
 prototype(PackageFactory.AtomicFusion.PropTypes:OneOf) {
   @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\OneOfmplementation'
+}
+
+prototype(PackageFactory.AtomicFusion.PropTypes:DataStructure) {
+  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\DataStructureImplementation'
+}
+
+prototype(PackageFactory.AtomicFusion.PropTypes:InstanceOf) {
+  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\InstanceOfImplementation'
+  type = null
+}
+
+prototype(PackageFactory.AtomicFusion.PropTypes:ForPrototype) {
+  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\ForPrototypeImplementation'
+  prototypeName = null
 }
 
 prototype(Neos.Fusion:Component) {
