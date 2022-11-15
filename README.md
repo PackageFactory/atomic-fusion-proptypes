@@ -27,53 +27,51 @@ Proptypes can also be specified via fusion objects.
 ```neosfusion
 @propTypes {
     # all props can be marked as required via `@required = true`
-    int = PackageFactory.AtomicFusion.PropTypes:Int {
+    int = PropTypes:Int {
       @required = true
     }
-    float = PackageFactory.AtomicFusion.PropTypes:Float
-    bool = PackageFactory.AtomicFusion.PropTypes:Bool
+    float = PropTypes:Float
+    bool = PropTypes:Bool
 
     # strings allow to specify an optional `regularExpression`
-    string = PackageFactory.AtomicFusion.PropTypes:String {
+    string = PropTypes:String {
         regularExpression = '/hello world/'
     }
 
-    # allows array values that satisfy one of the given validators
-    arrayOf = PackageFactory.AtomicFusion.PropTypes:ArrayOf {
-        int = PackageFactory.AtomicFusion.PropTypes:Int
-        float = PackageFactory.AtomicFusion.PropTypes:Float
+    # allows array values that satisfy one of the given validators 
+    # or equal one of the given values
+    arrayOf = PropTypes:ArrayOf {
+        int = PropTypes:Int
+        float = PropTypes:Float
+        value1 = "foo"
+        value2 = "bar"
         ...
     }
 
     # allow values that satisfy one of the given validators
-    anyOf = PackageFactory.AtomicFusion.PropTypes:AnyOf {
-        int = PackageFactory.AtomicFusion.PropTypes:Int
-        string = PackageFactory.AtomicFusion.PropTypes:String
-        ...
-    }
-
-    # allow values that match one of the given values 
-    oneOf = PackageFactory.AtomicFusion.PropTypes:OneOf {
-        option1 = 'fish'
-        option2 = 'meat'
-        option3 = 'veggies'
+    # or equal one of the given values
+    anyOf = PropTypes:AnyOf {
+        int = PropTypes:Int
+        string = PropTypes:String
+        value1 = "foo"
+        value2 = "bar"
         ...
     }
 
     # a nested structure that is valid once all children valídate
-    dataStructure = PackageFactory.AtomicFusion.PropTypes:DataStructure {
-        title = PackageFactory.AtomicFusion.PropTypes:String
-        description = PackageFactory.AtomicFusion.PropTypes:String
+    dataStructure = PropTypes:DataStructure {
+        title = PropTypes:String
+        description = PropTypes:String
         ...
     }
 
     # a php object that satisfies the given interface
-    instanceOf = PackageFactory.AtomicFusion.PropTypes:InstanceOf {
+    instanceOf = PropTypes:InstanceOf {
         type = '\DateTimeInterface'
     }
 
     # data structure validatpr that uses the defined proptypes from another prototype
-    forPrototype = PackageFactory.AtomicFusion.PropTypes:ForPrototype {
+    forPrototype = PropTypes:ForPrototype {
         prototypeName = "Vendor.Site:Prototype"
     }
 }
