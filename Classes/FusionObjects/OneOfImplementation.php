@@ -9,7 +9,7 @@ use Neos\Fusion\Exception\RuntimeException;
 use Neos\Fusion\FusionObjects\AbstractArrayFusionObject;
 use PackageFactory\AtomicFusion\PropTypes\Validators\OneOfValidator;
 
-class AnyOfImplementation extends AbstractArrayFusionObject
+class OneOfImplementation extends AbstractArrayFusionObject
 {
     use AbstractValidatorTrait;
 

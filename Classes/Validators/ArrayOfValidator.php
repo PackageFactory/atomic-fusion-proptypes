@@ -17,7 +17,7 @@ class ArrayOfValidator extends AbstractValidator
      * @var array
      */
     protected $supportedOptions = [
-        'itemValidator' => array(null, 'All items of the array satify this validator', 'Validatop')
+        'itemValidator' => array(null, 'All items of the array satisfy this validator', 'Validator')
     ];
 
     /**

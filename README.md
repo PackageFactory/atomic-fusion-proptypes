@@ -50,7 +50,7 @@ Proptypes can also be specified via fusion objects.
 
     # allow values that satisfy one of the given validators
     # or equal one of the given values
-    anyOf = PropTypes:AnyOf {
+    anyOf = PropTypes:OneOf {
         int = PropTypes:Int
         string = PropTypes:String
         value1 = "foo"
