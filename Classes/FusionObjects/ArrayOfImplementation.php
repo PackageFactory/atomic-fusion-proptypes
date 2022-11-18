@@ -16,30 +16,7 @@ class ArrayOfImplementation extends AbstractArrayFusionObject
 
     public function createValidator(): ValidatorInterface
     {
-        $validators = [];
-        $values = [];
-        foreach ($this->evaluateNestedProperties() as $key => $item) {
-            if ($item instanceof ValidatorInterface) {
-                $validators[] = $item;
-            } else {
-                $values[] = $item;
-            }
-        }
-
-        if (count($values) > 0) {
-            $validators[] = new OneOfValidator(['values' => $values]);
-        }
-
-        if (count($validators) === 0) {
-            throw new RuntimeException("ArrayOf Validator needs at least one children");
-        } elseif (count($validators) === 1) {
-            return new ArrayOfValidator(["itemValidator" => array_pop($validators)]);
-        } else {
-            $disjunctionValidator = new DisjunctionValidator();
-            foreach($validators as $validator) {
-                $disjunctionValidator->addValidator($validator);
-            }
-            return new ArrayOfValidator(["itemValidator" => $disjunctionValidator]);
-        }
+        $itemValidator = $this->fusionValue('itemValidator');
+        return new ArrayOfValidator(["itemValidator" => $itemValidator]);
     }
 }

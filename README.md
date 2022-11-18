@@ -38,14 +38,9 @@ Proptypes can also be specified via fusion objects.
         regularExpression = '/hello world/'
     }
 
-    # allows array values that satisfy one of the given validators 
-    # or equal one of the given values
+    # allows array values that satisfy the given `itemValidator` 
     arrayOf = PropTypes:ArrayOf {
-        int = PropTypes:Int
-        float = PropTypes:Float
-        value1 = "foo"
-        value2 = "bar"
-        ...
+        itemValidator = PropTypes:Int
     }
 
     # allow values that satisfy one of the given validators
