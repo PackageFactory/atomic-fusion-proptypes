@@ -13,10 +13,15 @@ trait AbstractValidatorTrait
     {
         $validator = $this->createValidator();
         if ($this->fusionValue('__meta/required')) {
-            $conjunctionCalidator = new ConjunctionValidator();
-            $conjunctionCalidator->addValidator($validator);
-            $conjunctionCalidator->addValidator(new NotEmptyValidator());
-            return $conjunctionCalidator;
+            if ($validator instanceof ConjunctionValidator) {
+                $validator->addValidator(new NotEmptyValidator());
+                return $validator;
+            } else {
+                $conjunctionValidator = new ConjunctionValidator();
+                $conjunctionValidator->addValidator($validator);
+                $conjunctionValidator->addValidator(new NotEmptyValidator());
+                return $conjunctionValidator;
+            }
         }
         return $validator;
     }
