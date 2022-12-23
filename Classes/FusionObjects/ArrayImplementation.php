@@ -10,13 +10,13 @@ use Neos\Fusion\FusionObjects\AbstractArrayFusionObject;
 use PackageFactory\AtomicFusion\PropTypes\Validators\ArrayOfValidator;
 use PackageFactory\AtomicFusion\PropTypes\Validators\OneOfValidator;
 
-class ArrayOfImplementation extends AbstractArrayFusionObject
+class ArrayImplementation extends AbstractArrayFusionObject
 {
     use AbstractValidatorTrait;
 
     public function createValidator(): ValidatorInterface
     {
-        $itemValidator = $this->fusionValue('itemValidator');
+        $itemValidator = $this->fusionValue('type');
         return new ArrayOfValidator(["itemValidator" => $itemValidator]);
     }
 }

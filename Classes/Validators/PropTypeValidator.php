@@ -12,11 +12,6 @@ use Neos\Flow\Validation\Validator\ValidatorInterface;
 
 class PropTypeValidator extends ConjunctionValidator implements ProtectedContextAwareInterface
 {
-    /**
-     * @var ConjunctionValidator
-     * @Flow\Inject
-     */
-    protected $conjunctionValidator;
 
     /**
      * @return $this

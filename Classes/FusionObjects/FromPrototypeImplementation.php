@@ -6,7 +6,7 @@ namespace PackageFactory\AtomicFusion\PropTypes\FusionObjects;
 use Neos\Fusion\FusionObjects\AbstractFusionObject;
 use PackageFactory\AtomicFusion\PropTypes\Validators\DataStructureValidator;
 
-class ForPrototypeImplementation extends AbstractFusionObject
+class FromPrototypeImplementation extends AbstractFusionObject
 {
     use AbstractValidatorTrait;
 

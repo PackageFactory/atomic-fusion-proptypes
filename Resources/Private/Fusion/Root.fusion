@@ -15,12 +15,12 @@ prototype(PackageFactory.AtomicFusion.PropTypes:String) {
   regularExpression = null
 }
 
-prototype(PackageFactory.AtomicFusion.PropTypes:ArrayOf) {
-  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\ArrayOfImplementation'
+prototype(PackageFactory.AtomicFusion.PropTypes:Array) {
+  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\ArrayImplementation'
 }
 
-prototype(PackageFactory.AtomicFusion.PropTypes:OneOf) {
-  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\OneOfImplementation'
+prototype(PackageFactory.AtomicFusion.PropTypes:Union) {
+  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\UnionImplementation'
 }
 
 prototype(PackageFactory.AtomicFusion.PropTypes:InstanceOf) {
@@ -32,8 +32,8 @@ prototype(PackageFactory.AtomicFusion.PropTypes:DataStructure) {
   @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\DataStructureImplementation'
 }
 
-prototype(PackageFactory.AtomicFusion.PropTypes:ForPrototype) {
-  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\ForPrototypeImplementation'
+prototype(PackageFactory.AtomicFusion.PropTypes:FromPrototype) {
+  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\FromPrototypeImplementation'
   prototypeName = null
 }
 
@@ -42,11 +42,11 @@ prototype(PropTypes:Int) < prototype(PackageFactory.AtomicFusion.PropTypes:Int)
 prototype(PropTypes:Float) < prototype(PackageFactory.AtomicFusion.PropTypes:Float)
 prototype(PropTypes:Bool) < prototype(PackageFactory.AtomicFusion.PropTypes:Bool)
 prototype(PropTypes:String) < prototype(PackageFactory.AtomicFusion.PropTypes:String)
-prototype(PropTypes:ArrayOf) < prototype(PackageFactory.AtomicFusion.PropTypes:ArrayOf)
-prototype(PropTypes:OneOf) < prototype(PackageFactory.AtomicFusion.PropTypes:OneOf)
+prototype(PropTypes:Array) < prototype(PackageFactory.AtomicFusion.PropTypes:Array)
+prototype(PropTypes:Union) < prototype(PackageFactory.AtomicFusion.PropTypes:Union)
 prototype(PropTypes:DataStructure) < prototype(PackageFactory.AtomicFusion.PropTypes:DataStructure)
 prototype(PropTypes:InstanceOf) < prototype(PackageFactory.AtomicFusion.PropTypes:InstanceOf)
-prototype(PropTypes:ForPrototype) < prototype(PackageFactory.AtomicFusion.PropTypes:ForPrototype)
+prototype(PropTypes:FromPrototype) < prototype(PackageFactory.AtomicFusion.PropTypes:FromPrototype)
 
 prototype(Neos.Fusion:Component) {
   @exceptionHandler = 'PackageFactory\\AtomicFusion\\PropTypes\\Error\\ExceptionHandler\\PropTypeExceptionHandler'

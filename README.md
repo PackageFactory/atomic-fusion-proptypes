@@ -3,7 +3,7 @@
 
 > Validate the props passed to a component via `@propType` annotation. The syntax for the propType annotation is derived from react-propTypes.
 
-*ATTENTION: This package is by default only validatin the props in development-context.*
+*ATTENTION: This package is by default only validating the props in development-context.*
 
 ```
 prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
@@ -38,14 +38,14 @@ Proptypes can also be specified via fusion objects.
         regularExpression = '/hello world/'
     }
 
-    # allows array values that satisfy the given `itemValidator` 
-    arrayOf = PropTypes:ArrayOf {
-        itemValidator = PropTypes:Int
+    # allows array values that satisfy the `type`
+    array = PropTypes:Array {
+        type = PropTypes:Int
     }
 
     # allow values that satisfy one of the given validators
     # or equal one of the given values
-    anyOf = PropTypes:OneOf {
+    union = PropTypes:Union {
         int = PropTypes:Int
         string = PropTypes:String
         value1 = "foo"
@@ -65,8 +65,8 @@ Proptypes can also be specified via fusion objects.
         type = '\DateTimeInterface'
     }
 
-    # data structure validatpr that uses the defined proptypes from another prototype
-    forPrototype = PropTypes:ForPrototype {
+    # data structure validator that uses the defined proptypes from another prototype
+    fromPrototype = PropTypes:FromPrototype {
         prototypeName = "Vendor.Site:Prototype"
     }
 }

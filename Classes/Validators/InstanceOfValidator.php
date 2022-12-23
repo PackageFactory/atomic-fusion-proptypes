@@ -16,7 +16,7 @@ class InstanceOfValidator extends AbstractValidator
      * @var array
      */
     protected $supportedOptions = [
-        'type' => array(null, 'The expected type', 'string')
+        'type' => [null, 'The expected type', 'string']
     ];
 
     /**

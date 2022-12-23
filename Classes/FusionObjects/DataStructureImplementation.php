@@ -12,7 +12,10 @@ class DataStructureImplementation extends AbstractArrayFusionObject
 
     public function createValidator(): DataStructureValidator
     {
-        $resultParts = $this->evaluateNestedProperties();
+        $resultParts = [];
+        foreach ($this->evaluateNestedProperties() as $key => $item) {
+            $resultParts[$key] = $item;
+        }
         return new DataStructureValidator(['dataStructure' => $resultParts]);
     }
 }

@@ -18,7 +18,7 @@ class DataStructureValidator extends AbstractValidator
      * @var array
      */
     protected $supportedOptions = [
-        'dataStructure' => array([], 'The expected data-structure for this property', 'array')
+        'dataStructure' => [[], 'The expected data-structure for this property', 'array']
      ];
 
     /**
