@@ -25,7 +25,7 @@ class UnionImplementation extends AbstractArrayFusionObject
         }
 
         if (count($validators) === 0) {
-            throw new RuntimeException("AnyOf Validator needs at least one children");
+            throw new RuntimeException("Union Validator needs at least one child");
         } elseif (count($validators) === 1) {
             return array_pop($validators);
         } else {
