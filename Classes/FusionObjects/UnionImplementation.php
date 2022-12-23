@@ -16,17 +16,12 @@ class UnionImplementation extends AbstractArrayFusionObject
     public function createValidator(): ValidatorInterface
     {
         $validators = [];
-        $values = [];
         foreach ($this->evaluateNestedProperties() as $key => $item) {
             if ($item instanceof ValidatorInterface) {
                 $validators[] = $item;
             } else {
-                $values[] = $item;
+                throw new RuntimeException("Union Validator accepts only Validators as children");
             }
-        }
-
-        if (count($values) > 0) {
-            $validators[] = new OneOfValidator(['values' => $values]);
         }
 
         if (count($validators) === 0) {

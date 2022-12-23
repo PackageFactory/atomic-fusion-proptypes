@@ -23,6 +23,10 @@ prototype(PackageFactory.AtomicFusion.PropTypes:Union) {
   @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\UnionImplementation'
 }
 
+prototype(PackageFactory.AtomicFusion.PropTypes:Enum) {
+  @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\EnumImplementation'
+}
+
 prototype(PackageFactory.AtomicFusion.PropTypes:InstanceOf) {
   @class = 'PackageFactory\\AtomicFusion\\PropTypes\\FusionObjects\\InstanceOfImplementation'
   type = null
@@ -44,6 +48,7 @@ prototype(PropTypes:Bool) < prototype(PackageFactory.AtomicFusion.PropTypes:Bool
 prototype(PropTypes:String) < prototype(PackageFactory.AtomicFusion.PropTypes:String)
 prototype(PropTypes:Array) < prototype(PackageFactory.AtomicFusion.PropTypes:Array)
 prototype(PropTypes:Union) < prototype(PackageFactory.AtomicFusion.PropTypes:Union)
+prototype(PropTypes:Enum) < prototype(PackageFactory.AtomicFusion.PropTypes:Enum)
 prototype(PropTypes:DataStructure) < prototype(PackageFactory.AtomicFusion.PropTypes:DataStructure)
 prototype(PropTypes:InstanceOf) < prototype(PackageFactory.AtomicFusion.PropTypes:InstanceOf)
 prototype(PropTypes:FromPrototype) < prototype(PackageFactory.AtomicFusion.PropTypes:FromPrototype)

@@ -44,13 +44,17 @@ Proptypes can also be specified via fusion objects.
     }
 
     # allow values that satisfy one of the given validators
-    # or equal one of the given values
     union = PropTypes:Union {
         int = PropTypes:Int
         string = PropTypes:String
-        value1 = "foo"
-        value2 = "bar"
         ...
+    }
+
+    # allow exacly the values that are specified
+    enum = PropTypes:Enum {     
+      value1 = "foo"
+      value2 = "bar"
+      ...
     }
 
     # a nested structure that is valid once all children valídate
