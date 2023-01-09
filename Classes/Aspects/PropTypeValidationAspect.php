@@ -43,7 +43,7 @@ class PropTypeValidationAspect
     {
         $fusionComponentImplementation = $joinPoint->getProxy();
         $strictMode = $fusionComponentImplementation['__meta/propTypes/__meta/strict'];
-        $validators = $fusionComponentImplementation['__meta/propTypes<Neos.Fusion:RawArray>'];
+        $validators = $fusionComponentImplementation['__meta/propTypes<Neos.Fusion:DataStructure>'];
         $props = $joinPoint->getAdviceChain()->proceed($joinPoint);
 
         $validationResult = new Result();

@@ -3,7 +3,7 @@
 
 > Validate the props passed to a component via `@propType` annotation. The syntax for the propType annotation is derived from react-propTypes.
 
-*ATTENTION: This package is by default only active in development-context.*
+*ATTENTION: This package is by default only validating the props in development-context.*
 
 ```
 prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
@@ -19,6 +19,62 @@ prototype(Vendor.Site:Example) < prototype(Neos.Fusion:Component) {
 
 This will validate the given props with the validator that created in the @propTypes section
 via.
+
+## Fusion Validator Prototypes 
+
+Proptypes can also be specified via fusion objects.
+
+```neosfusion
+@propTypes {
+    # all props can be marked as required via `@required = true`
+    int = PropTypes:Int {
+      @required = true
+    }
+    float = PropTypes:Float
+    bool = PropTypes:Bool
+
+    # strings allow to specify an optional `regularExpression`
+    string = PropTypes:String {
+        regularExpression = '/hello world/'
+    }
+
+    # allows array values that satisfy the `type`
+    array = PropTypes:Array {
+        type = PropTypes:Int
+    }
+
+    # allow values that satisfy one of the given validators
+    union = PropTypes:Union {
+        int = PropTypes:Int
+        string = PropTypes:String
+        ...
+    }
+
+    # allow exacly the values that are specified
+    enum = PropTypes:Enum {     
+      value1 = "foo"
+      value2 = "bar"
+      ...
+    }
+
+    # a nested structure that is valid once all children valídate
+    dataStructure = PropTypes:DataStructure {
+        title = PropTypes:String
+        description = PropTypes:String
+        ...
+    }
+
+    # a php object that satisfies the given interface
+    instanceOf = PropTypes:InstanceOf {
+        type = '\DateTimeInterface'
+    }
+
+    # data structure validator that uses the defined proptypes from another prototype
+    fromPrototype = PropTypes:FromPrototype {
+        prototypeName = "Vendor.Site:Prototype"
+    }
+}
+```
 
 ## Methods that are supported by the propTypes helper
 

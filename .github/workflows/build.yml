@@ -1,0 +1,41 @@
+name: build
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'master'
+  pull_request:
+    branches:
+      - 'main'
+      - 'master'
+jobs:
+  test:
+    name: "Test (PHP ${{ matrix.php-versions }}, Flow ${{ matrix.flow-versions }})"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        php-versions: ['8.0', '8.1' ]
+       # neos-versions: [ '8.0' ]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: ${{ env.FLOW_FOLDER }}
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: mbstring, xml, json, zlib, iconv, intl, pdo_sqlite
+          ini-values: date.timezone="Africa/Tunis", opcache.fast_shutdown=0, apc.enable_cli=on
+
+      # - name: Set Flow Version
+      #   run: composer require neos/neos ^${{ matrix.neos-versions }} --no-progress --no-interaction
+
+      - name: Run Tests
+        run: composer test

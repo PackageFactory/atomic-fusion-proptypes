@@ -4,7 +4,7 @@
     "name": "packagefactory/atomicfusion-proptypes",
     "license": "GPL-3.0-or-later",
     "require": {
-        "neos/fusion": "^5.0 || ^7.0 || ^8.0 || dev-master"
+        "neos/fusion": "^8.0 || dev-master"
     },
     "autoload": {
         "psr-4": {
@@ -100,21 +100,21 @@
     },
     "scripts": {
         "test:prepare": [
-            "cd Build/Travis && composer install",
-            "rsync -av --exclude='Build' --exclude='.git' --delete ./ ./Build/Travis/Packages/Application/PackageFactory.AtomicFusion.PropTypes",
-            "rm -f Build/Travis/Configuration/PackageStates.php",
-            "rm -f Build/Travis/Configuration/Routes.yaml",
-            "cp Build/Travis/Routes.yaml Build/Travis/Configuration/"
+            "cd Build/TestDistribution && composer install",
+            "rsync -av --exclude='Build' --exclude='.git' --delete ./ ./Build/TestDistribution/Packages/Application/PackageFactory.AtomicFusion.PropTypes",
+            "rm -f Build/TestDistribution/Configuration/PackageStates.php",
+            "rm -f Build/TestDistribution/Configuration/Routes.yaml",
+            "cp Build/TestDistribution/Routes.yaml Build/TestDistribution/Configuration/"
         ],
         "test:unit": [
             "composer test:prepare",
-            "Build/Travis/bin/phpunit --verbose -c Build/Travis/unit-tests.xml"
+            "Build/TestDistribution/bin/phpunit --verbose -c Build/TestDistribution/unit-tests.xml"
         ],
         "test:functional": [
             "composer test:prepare",
-            "cd Build/Travis && FLOW_CONTEXT=Testing ./flow flow:cache:flush",
-            "cd Build/Travis && FLOW_CONTEXT=Testing ./flow flow:package:rescan",
-            "FLOW_CONTEXT=Testing Build/Travis/bin/phpunit --verbose -c Build/Travis/functional-tests.xml"
+            "cd Build/TestDistribution && FLOW_CONTEXT=Testing ./flow flow:cache:flush",
+            "cd Build/TestDistribution && FLOW_CONTEXT=Testing ./flow flow:package:rescan",
+            "FLOW_CONTEXT=Testing Build/TestDistribution/bin/phpunit --verbose -c Build/TestDistribution/functional-tests.xml"
         ],
         "test": [
             "composer test:unit",

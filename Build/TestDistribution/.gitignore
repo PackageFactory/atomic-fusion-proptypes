@@ -8,4 +8,5 @@
 /Upgrading.rst
 /flow
 /flow.bat
-.composer.lock
+.phpunit.result.cache
+composer.lock

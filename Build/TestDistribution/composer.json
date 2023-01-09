@@ -4,21 +4,26 @@
     "license": "MIT",
     "config": {
         "vendor-dir": "Packages/Libraries",
-        "bin-dir": "bin"
+        "bin-dir": "bin",
+        "allow-plugins": {
+            "neos/composer-plugin": true
+        }
     },
     "require": {
-        "php": "^7.2",
-        "neos/flow": "~6.0.0",
-        "neos/fusion": "~5.0.0",
-        "neos/content-repository": "~5.0.0",
+        "php": ">8.0",
+        "neos/flow": "~8.0.0",
+        "neos/fusion": "~8.0.0",
+        "neos/content-repository": "~8.0.0",
         "packagefactory/atomicfusion-proptypes": "*"
     },
     "require-dev": {
-        "neos/buildessentials": "6.0.x-dev",
+        "neos/buildessentials": "8.0.x-dev",
         "mikey179/vfsstream": "^1.6",
-        "phpunit/phpunit": "^8.1",
         "symfony/css-selector": "~2.0",
-        "neos/behat": "@dev"
+        "neos/behat": "@dev",
+        "phpunit/phpunit": "^9.5",
+        "phpstan/phpstan": "^1.8",
+        "squizlabs/php_codesniffer": "^3.7"
     },
     "suggest": {
         "ext-pdo_sqlite": "For running functional tests out-of-the-box this is required"

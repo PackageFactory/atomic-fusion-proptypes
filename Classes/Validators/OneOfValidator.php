@@ -15,7 +15,7 @@ class OneOfValidator extends AbstractValidator
      * @var array
      */
     protected $supportedOptions = [
-        'values' => array([], 'Array of values that are considered valid', 'array')
+        'values' => [[], 'Array of values that are considered valid', 'array']
     ];
 
     /**

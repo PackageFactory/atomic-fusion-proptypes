@@ -12,11 +12,6 @@ use Neos\Flow\Validation\Validator\ValidatorInterface;
 
 class PropTypeValidator extends ConjunctionValidator implements ProtectedContextAwareInterface
 {
-    /**
-     * @var ConjunctionValidator
-     * @Flow\Inject
-     */
-    protected $conjunctionValidator;
 
     /**
      * @return $this
@@ -130,7 +125,7 @@ class PropTypeValidator extends ConjunctionValidator implements ProtectedContext
      */
     public function shape($shape)
     {
-        $this->addValidator(new ShapeValidator(['shape' => $shape]));
+        $this->addValidator(new DataStructureValidator(['dataStructure' => $shape]));
         return $this;
     }
 
