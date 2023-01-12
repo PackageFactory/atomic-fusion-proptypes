@@ -37,11 +37,7 @@ class ShapeValidator extends AbstractValidator
             $result = $this->getResult() ?: new Result();
             foreach ($this->options['shape'] as $key => $subValidator) {
                 if (is_array($value) || ($value instanceof \ArrayAccess)) {
-                    if (array_key_exists($key, $value)) {
-                        $subValue = $value[$key];
-                    } else {
-                        $subValue = null;
-                    }
+                    $subValue = $value[$key] ?? null;
                 } elseif (ObjectAccess::isPropertyGettable($value, $key)) {
                     $subValue = ObjectAccess::getPropertyPath($value, $key);
                 } else {
